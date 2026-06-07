@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="site_title">DIBP Global — Цифровые инвестиции и бизнес-партнёрство</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+.container { max-width: 95% !important; width: 95% !important; }
+.hero-grid { max-width: 100% !important; }
+main { width: 100% !important; }
+:root{--gold:#d4af37;--gold-light:#f0d060;--bg:#0a0a0a;--card:#1a1a1a;--text:#fff;--muted:#888;--border:#2a2a2a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.loader-circle{width:60px;height:60px;border:3px solid rgba(212,175,55,.3);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 15px}
+.loader-text{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold);letter-spacing:3px;text-align:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.top-bar{background:#000;border-bottom:1px solid rgba(255,255,255,.05);padding:8px 0;font-size:.8rem}
+.top-bar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.top-bar-left{display:flex;gap:20px;color:var(--muted)}
+.top-bar-left i{color:var(--gold);margin-right:5px}
+.lang-switcher{display:flex;gap:5px}
+.lang-btn{background:0 0;border:1px solid transparent;color:var(--muted);padding:4px 10px;border-radius:8px;cursor:pointer;font-size:.75rem;transition:.3s}
+.lang-btn.active,.lang-btn:hover{background:rgba(212,175,55,.1);border-color:var(--gold);color:var(--gold)}
+.ticker-wrapper{background:linear-gradient(90deg,#000,#111,#000);border-bottom:1px solid rgba(212,175,55,.3);overflow:hidden;padding:10px 0}
+.ticker{width:100%;overflow:hidden}
+.ticker-track{display:flex;animation:ticker 40s linear infinite;white-space:nowrap;will-change:transform}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;margin-right:50px;color:#c0c0c0;font-size:1.1rem;font-weight:500}
+.ticker-item strong{color:#f0d060!important;font-size:1.15rem}
+.ticker-item .equals{color:#4caf50;font-weight:700}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.navbar{background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,175,55,.3);padding:15px 0;position:sticky;top:0;z-index:1000}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between}
+.burger-btn{background:0 0;border:none;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:5px;z-index:1001}
+.burger-btn span{display:block;width:38px;height:4px;background:var(--gold);border-radius:3px}
+.logo{display:flex;align-items:center;gap:20px;cursor:pointer}
+.logo-icon{width:75px;height:70px;background:linear-gradient(135deg,var(--gold),var(--gold-light),#996515);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.logo-icon i{color:#000;font-size:2.3rem}
+.logo-text h1{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--text);line-height:1}
+.logo-text h1 span{color:var(--gold)}.logo-text small{font-size:.85rem;color:var(--muted)}
+.nav-actions{display:flex;gap:10px}
+.btn{padding:10px 20px;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;transition:.3s;border:none;font-family:'Montserrat',sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light),#996515);color:#000;box-shadow:0 4px 15px rgba(212,175,55,.2)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-outline-gold{background:0 0;border:1px solid var(--gold);color:var(--gold)}
+.btn-outline-gold:hover{background:rgba(212,175,55,.1);transform:translateY(-2px)}
+.btn-lg{padding:14px 30px;font-size:1rem}.btn-block{width:100%;padding:14px}.btn:disabled{opacity:.5}
+.btn-sm{padding:6px 12px;font-size:.75rem}
+.burger-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:2000;visibility:hidden;opacity:0;transition:.3s}
+.burger-overlay.active{visibility:visible;opacity:1}
+.burger-menu{position:fixed;top:0;left:-350px;width:320px;height:100%;background:var(--card);z-index:3000;transition:left .4s;overflow-y:auto;border-right:1px solid rgba(212,175,55,.3)}
+.burger-menu.active{left:0}
+.burger-header{display:flex;align-items:center;gap:12px;padding:25px 20px;background:#000;border-bottom:1px solid rgba(212,175,55,.3)}
+.user-avatar i{font-size:2.5rem;color:var(--gold)}
+.user-details h4{color:var(--text);font-size:1rem}.user-details span{color:var(--gold);font-size:.8rem}
+.burger-close{margin-left:auto;background:0 0;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
+.burger-nav ul{list-style:none;padding:10px 0}
+.burger-nav>ul>li>a{display:flex;align-items:center;gap:12px;padding:14px 20px;color:#b0b0b0;text-decoration:none;transition:.3s;font-size:.9rem;cursor:pointer}
+.burger-nav>ul>li>a:hover{background:rgba(212,175,55,.05);color:var(--gold)}
+.arrow{margin-left:auto;transition:transform .3s}
+.has-submenu.active .arrow{transform:rotate(180deg)}
+.submenu{list-style:none;max-height:0;overflow:hidden;transition:max-height .4s;background:#0d0d0d}
+.has-submenu.active .submenu{max-height:500px}
+.submenu a{display:block;padding:12px 20px 12px 52px;color:var(--muted);text-decoration:none;font-size:.85rem;cursor:pointer}
+.submenu a:hover{color:var(--gold)}
+.hero{padding-top:80px;padding-bottom:60px;min-height:auto;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:center;max-width:100%!important}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);padding:8px 16px;border-radius:50px;color:var(--gold);font-size:.8rem;margin-bottom:20px}
+.hero-title{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;line-height:1.2;margin-bottom:20px}
+.hero-title span{background:linear-gradient(135deg,var(--gold),var(--gold-light),#996515);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-subtitle{color:#b0b0b0;font-size:1.1rem;margin-bottom:30px}
+.hero-buttons{display:flex;gap:15px;margin-bottom:30px}
+.hero-stats{display:flex;gap:30px}
+.stat-item{text-align:center}.stat-number{display:block;font-size:1.8rem;font-weight:700;color:var(--gold);font-family:'Playfair Display',serif}.stat-label{font-size:.8rem;color:var(--muted)}
+.hero-content{margin-top:0px;margin-left:0px}
+.hero-form-wrapper {
+    margin-right: -40px;
+    margin-top: 0px;
+    width: 450px;
+}
+@media (max-width:992px){.hero-form-wrapper{margin-right:0;margin-top:0;width:100%}.hero-grid{grid-template-columns:1fr}.banners-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.hero-title{font-size:2rem}.nav-actions{display:none}.footer-grid{grid-template-columns:1fr}.slide{padding:30px}}
+.auth-card{background:var(--card);border:1px solid rgba(212,175,55,.3);border-radius:20px;padding:30px;width:100%;max-width:555px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.auth-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:25px}
+.auth-tab{flex:1;padding:12px;background:0 0;border:none;color:var(--muted);font-size:.9rem;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;font-family:'Montserrat',sans-serif}
+.auth-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.auth-form{display:none}.auth-form.active{display:block}
+.banners{padding:60px 0;background:#111}
+.banners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.banner-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px;text-align:center;transition:.3s}
+.banner-card:hover{border-color:rgba(212,175,55,.3);transform:translateY(-5px)}
+.banner-card.featured{border-color:rgba(212,175,55,.3)}
+.banner-icon{width:60px;height:60px;background:rgba(212,175,55,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px}
+.banner-icon i{font-size:1.5rem;color:var(--gold)}
+.banner-card h3{margin-bottom:10px}.banner-card p{color:var(--muted);font-size:.85rem}
+.promo-slider{padding:60px 0}
+.slider-container{position:relative;overflow:hidden;border-radius:20px}
+.slider-track{display:flex;transition:transform .5s}
+.slide{min-width:100%;padding:50px;background:linear-gradient(135deg,#1a1a1a,#1a1a0a);border:1px solid rgba(212,175,55,.3);border-radius:20px}
+.slide-content h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);margin-bottom:15px}
+.slide-content p{color:#b0b0b0;margin-bottom:20px}
+.slider-nav{display:flex;justify-content:center;gap:10px;margin-top:20px}
+.slider-dot{width:12px;height:12px;border-radius:50%;background:var(--border);border:none;cursor:pointer}
+.slider-dot.active{background:var(--gold);transform:scale(1.3)}
+.about{padding:80px 0;background:#111}
+.section-header{text-align:center;margin-bottom:40px}
+.section-header h2{font-family:'Playfair Display',serif;font-size:2.2rem}
+.section-header p{color:var(--muted)}
+.about-content p{color:#b0b0b0;margin-bottom:20px;line-height:1.8}
+.about-content strong{color:var(--gold)}
+.footer{background:#000;border-top:2px solid rgba(212,175,55,.3);padding:50px 0 20px}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-bottom:30px}
+.footer-col h4{color:var(--text);margin-bottom:15px}
+.footer-col ul{list-style:none}.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{color:var(--muted);text-decoration:none;font-size:.85rem;cursor:pointer}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-col p{color:var(--muted);font-size:.85rem;margin-bottom:5px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center}
+.footer-bottom p{color:var(--muted);font-size:.8rem}
+.loading-spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .6s linear infinite}
+input,select{width:100%;padding:12px;margin-bottom:10px;background:#111;border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Montserrat',sans-serif;font-size:.9rem}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+label{color:var(--muted);font-size:.8rem;display:block;margin-bottom:5px}
+.lang-option:hover{background:rgba(212,175,55,.1)!important;color:#d4af37!important}
+#authForms{margin-top:-100px!important}
+#goldChartContainer{margin-left:0!important;margin-right:auto!important}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-content{animation:fadeInUp 1.8s ease}
+.banner-card{animation:fadeInUp 1.6s ease}
+.banner-card:nth-child(1){animation-delay:0.1s}
+.banner-card:nth-child(2){animation-delay:0.3s}
+.banner-card:nth-child(3){animation-delay:0.5s}
+.slide{animation:fadeInUp 1.5s ease}
+.footer{animation:fadeInUp 1.8s ease}
+#phasesContainer>div{animation:fadeInUp 1.5s ease}
+#phasesContainer>div:nth-child(1){animation-delay:0.1s}
+#phasesContainer>div:nth-child(2){animation-delay:0.3s}
+#phasesContainer>div:nth-child(3){animation-delay:0.5s}
+@keyframes pulse{0%,100%{box-shadow:0 4px 15px rgba(212,175,55,.2)}50%{box-shadow:0 4px 30px rgba(212,175,55,.5)}}
+.btn-gold{animation:pulse 2s infinite}
+
+#authForms {
+    margin-top: -60px !important;
+    position: relative;
+    z-index: 10;
+}
+
+#authForms {
+    align-self: flex-start;
+}
+
+.hero-form-wrapper {
+    align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2rem; }
+    .hero-subtitle { font-size: 0.9rem; }
+    .hero-content { margin: 0; }
+    .hero-form-wrapper { width: 100%; margin: 20px 0; }
+    .hero-stats { flex-wrap: wrap; gap: 15px; }
+    .stat-number { font-size: 1.3rem; }
+    
+    .banners-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    
+    .navbar-inner { flex-wrap: wrap; }
+    .logo-icon { width: 45px; height: 40px; }
+    .logo-icon i { font-size: 1.5rem; }
+    .logo-text h1 { font-size: 1.4rem; }
+    .logo-text small { font-size: 0.6rem; }
+    
+    .auth-card { padding: 20px; max-width: 100%; }
+    .btn { padding: 8px 15px; font-size: 0.8rem; }
+    
+    #phasesContainer { grid-template-columns: 1fr; }
+    
+    .slide { padding: 25px; }
+    .slide-content h2 { font-size: 1.4rem; }
+}
+
+  </style>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#d4af37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="DIBP Global">
+<link rel="apple-touch-icon" href="/icon-192.png">
+</head>
+<body>
+<div class="preloader" id="preloader"><div><div class="loader-circle"></div><div class="loader-text">DIBP Global</div></div></div>
+
+<header>
+<div class="top-bar"><div class="container"><div class="top-bar-inner">
+<div class="top-bar-left">
+    <span><a href="https://t.me/DIBPglobal" target="_blank" style="color:#888;text-decoration:none;"><i class="fab fa-telegram-plane"></i> <span data-i18n="top_telegram">t.me/DIBPglobal</span></a></span>
+    <span><i class="fas fa-envelope"></i> <span data-i18n="top_email">DIBPglobal@gmail.com</span></span>
+    <span><a onclick="showSupport()" style="color:#ff9800;cursor:pointer;text-decoration:none;font-weight:600;"><i class="fas fa-headset"></i> <span data-i18n="top_support">💬 Поддержка 24/7</span></a></span>
+</div>
+<div class="lang-switcher" style="position:relative;">
+    <button id="langBtn" onclick="toggleLangs()" style="background:transparent;border:1px solid #d4af37;color:#d4af37;padding:6px 12px;border-radius:8px;cursor:pointer;font-size:0.8rem;">🌐 RU ▼</button>
+    <div id="langList" style="display:none;position:absolute;top:100%;right:0;background:#1a1a1a;border:1px solid #d4af37;border-radius:8px;z-index:9999;">
+        <div onclick="changeLang('ru')" style="padding:8px 12px;cursor:pointer;color:#fff;">🇷🇺 Русский</div>
+        <div onclick="changeLang('en')" style="padding:8px 12px;cursor:pointer;color:#fff;">🇬🇧 English</div>
+        <div onclick="changeLang('ua')" style="padding:8px 12px;cursor:pointer;color:#fff;">🇺🇦 Українська</div>
+        <div onclick="changeLang('zh')" style="padding:8px 12px;cursor:pointer;color:#fff;">🇨🇳 中文</div>
+        <div onclick="changeLang('kg')" style="padding:8px 12px;cursor:pointer;color:#fff;">🇰🇬 Кыргызча</div>
+        <div onclick="changeLang('uz')" style="padding:8px 12px;cursor:pointer;color:#fff;">🇺🇿 O'zbekcha</div>
+    </div>
+</div>
+</div></div></div>
+
+<div class="ticker-wrapper">
+    <div class="ticker">
+        <div class="ticker-track">
+            <span class="ticker-item"><i class="fas fa-coins"></i>XAU/USD <span class="equals">=</span> <strong class="goldRate">0.00 USD/g</strong></span>
+<span class="ticker-item"><i class="fas fa-coins"></i>XAG/USD <span class="equals">=</span> <strong class="silverRate">0.00 USD/g</strong></span>
+<span class="ticker-item"><i class="fas fa-dollar-sign"></i>ALTYN/USD <span class="equals">=</span> <strong class="altynRate">0.0000</strong></span>
+<span class="ticker-item"><i class="fas fa-gem"></i>1 ALTYN <span class="equals">=</span> <strong style="color:#f0d060;">1 mg Gold</strong></span>
+
+<span class="ticker-item"><i class="fas fa-coins"></i>XAU/USD <span class="equals">=</span> <strong class="goldRate">0.00 USD/g</strong></span>
+<span class="ticker-item"><i class="fas fa-coins"></i>XAG/USD <span class="equals">=</span> <strong class="silverRate">0.00 USD/g</strong></span>
+<span class="ticker-item"><i class="fas fa-dollar-sign"></i>ALTYN/USD <span class="equals">=</span> <strong class="altynRate">0.0000</strong></span>
+<span class="ticker-item"><i class="fas fa-gem"></i>1 ALTYN <span class="equals">=</span> <strong style="color:#f0d060;">1 mg Gold</strong></span>
+		</div>
+    </div>
+</div>
+
+<nav class="navbar"><div class="container"><div class="navbar-inner">
+    <button class="burger-btn" id="burgerBtn"><span></span><span></span><span></span></button>
+    <div class="logo" onclick="location.href='/'">
+        <div class="logo-icon"><i class="fas fa-crown"></i></div>
+        <div class="logo-text"><h1>DIBP <span>Global</span></h1><small>Digital Investment & Business Partnership</small></div>
+    </div>
+    <div class="nav-actions" id="navActions">
+        <button class="btn btn-outline-gold" onclick="switchToLogin();scrollToAuth();" data-i18n="nav_login">Войти</button>
+        <button class="btn btn-gold" onclick="switchToRegister();scrollToAuth();" data-i18n="nav_register">Регистрация</button>
+    </div>
+</div></div></nav>
+</header>
+
+<div class="burger-overlay" id="burgerOverlay"></div>
+<aside class="burger-menu" id="burgerMenu">
+    <div class="burger-header">
+        <div class="user-avatar"><i class="fas fa-user-circle" id="burgerAvatar"></i></div>
+        <h4 id="burgerName"></h4>
+<span id="burgerId"></span>
+        <button class="burger-close" id="burgerClose"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="burger-nav" id="burgerNav"><ul><li><a onclick="scrollToHero()"><i class="fas fa-home"></i> <span data-i18n="burger_home">Главная</span></a></li></ul></nav>
+</aside>
+
+<main>
+<section class="hero" id="hero"><div class="container"><div class="hero-grid">
+    <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-star"></i> <span data-i18n="hero_badge">Надёжная платформа 2026</span></div>
+        <h1 class="hero-title" data-i18n="hero_title">Инвестируй в будущее с DIBP Global</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">Присоединяйтесь к глобальной цифровой экономике. Инвестируйте в прибыльные проекты, зарабатывайте на партнёрской программе и достигайте финансовой свободы!</p>
+        <div class="hero-buttons">
+            <button class="btn btn-gold btn-block" onclick="showProjects()" data-i18n="hero_btn_invest">📈 Инвестировать в проект</button>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item"><span class="stat-number" id="statInvestors">8000+</span><span class="stat-label" data-i18n="hero_stat_investors">Инвесторов</span></div>
+            <div class="stat-item"><span class="stat-number" id="statPaid">$12M+</span><span class="stat-label" data-i18n="hero_stat_paid">Выплачено</span></div>
+            <div class="stat-item"><span class="stat-number" id="statProjects">100+</span><span class="stat-label" data-i18n="hero_stat_projects">Проектов</span></div>
+        </div>
+    </div>
+    <div id="authForms" style="width:100%;max-width:450px;margin:0 auto;"></div>
+</div></div></section>
+
+<section id="phasesSection" style="padding:40px 0;background:var(--bg);display:none;">
+    <div class="container">
+        <h2 style="text-align:center;font-family:'Playfair Display',serif;font-size:3rem;margin-bottom:50px;" data-i18n="phases_title">📈 Бизнес проекты</h2>
+        <div id="phasesContainer" style="display:grid;grid-template-columns:repeat(3,1fr);gap:25px;">
+            <p style="color:var(--muted);text-align:center;" data-i18n="loading">Загрузка проектов...</p>
+        </div>
+    </div>
+</section>
+
+<section class="banners"><div class="container"><div class="banners-grid">
+    <div class="banner-card"><div class="banner-icon"><i class="fas fa-rocket"></i></div><h3 data-i18n="banner1_title">Первый шаг к успеху</h3><p data-i18n="banner1_text">Присоединение к DIBP — это первый шаг к финансовому успеху! Начните инвестировать уже сегодня.</p></div>
+    <div class="banner-card featured"><div class="banner-icon"><i class="fas fa-graduation-cap"></i></div><h3 data-i18n="banner2_title">Обучение и поддержка</h3><p data-i18n="banner2_text">Мы предоставляем партнёрам: обучение, лучший маркетинговый план вознаграждения, возможность многогранного заработка, поддержку и технологичную платформу.</p></div>
+    <div class="banner-card"><div class="banner-icon"><i class="fas fa-globe"></i></div><h3 data-i18n="banner3_title">Мир цифровой коммерции</h3><p data-i18n="banner3_text">Присоединяйтесь к DIBP чтобы получить доступ к полноценным услугам компании. Вас ждут самые интересные предложения для инвестиций.</p></div>
+</div></div></section>
+
+<section class="promo-slider"><div class="container"><div class="slider-container">
+    <div class="slider-track" id="sliderTrack">
+        <div class="slide"><div class="slide-content"><h2 data-i18n="slide1_title">Инвестиции от 1 евро</h2><p data-i18n="slide1_text">Доступный вход для каждого. Начните с малого и растите вместе с нами.</p><button class="btn btn-gold" onclick="scrollToAuth()" data-i18n="slide1_btn">Подробнее</button></div></div>
+        <div class="slide"><div class="slide-content"><h2 data-i18n="slide2_title">Партнёрская программа</h2><p data-i18n="slide2_text">Зарабатывайте до 1/5 от прибыли за партнёров и 1/10 от прибыли за субпартнёров.</p><button class="btn btn-gold" onclick="scrollToAuth()" data-i18n="slide2_btn">Стать партнёром</button></div></div>
+        <div class="slide"><div class="slide-content"><h2 data-i18n="slide3_title">Своевременные выплаты</h2><p data-i18n="slide3_text">Мы гарантируем стабильные выплаты и полную сохранность вашего капитала.</p><button class="btn btn-gold" onclick="scrollToAuth()" data-i18n="slide3_btn">Начать</button></div></div>
+    </div>
+    <div class="slider-nav"><button class="slider-dot active" data-slide="0"></button><button class="slider-dot" data-slide="1"></button><button class="slider-dot" data-slide="2"></button></div>
+</div></div></section>
+
+<section class="about" id="about"><div class="container"><div class="section-header">
+    <h2 data-i18n="about_title">О компании DIBP Global</h2>
+    <p data-i18n="about_subtitle">Платформа нового поколения для инвестиций и бизнес-партнёрства</p>
+</div><div class="about-content">
+    <p data-i18n="about_p1">DIBP Global — это платформа нового поколения, которая связывает вас с глобальной цифровой экономикой. Мы упрощаем путь к предпринимательству и инвестициям благодаря принципам краудфандинга. Наша компания специализируется на организации, реализации и управлении бизнеса.</p>
+    <p data-i18n="about_p2">DIBP связывает инвесторов и предпринимателей на одной площадке, чтобы максимально упростить людям реализацию своих бизнес-проектов. Так же мы предлагаем партнёрскую программу на 2 глубины: партнёрство и субпартнёрство. В DIBP вы можете инвестировать в прибыльные бизнес проекты или получить финансирование для реализации вашего бизнеса.</p>
+    <p data-i18n="about_p3">Мы берём всё на себя: полное управление, обслуживание, сохранность вашего капитала, конфиденциальность и своевременные выплаты. Инвестиции от 1 евро. Ваша задача — только получать прибыль. Наш приоритет — помочь инвесторам-партнёрам достичь финансового успеха и устойчивого роста капитала.</p>
+</div></div></section>
+</main>
+
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-col"><h4 style="display:flex;align-items:center;gap:10px;"><i class="fas fa-crown" style="color:#d4af37;"></i> DIBP <span style="color:#d4af37;">Global</span></h4><p data-i18n="footer_about">Digital Investment & Business Partnership</p><p data-i18n="footer_about_desc">Платформа нового поколения для глобальной цифровой экономики.</p></div>
+    <div class="footer-col"><h4 data-i18n="footer_links">Быстрые ссылки</h4><ul><li><a onclick="scrollToHero()" data-i18n="footer_home">Главная</a></li><li><a onclick="scrollToAuth()" data-i18n="footer_partnership">Партнёрство</a></li><li><a onclick="scrollToAuth()" data-i18n="footer_investments">Инвестиции</a></li><li><a onclick="scrollToAbout()" data-i18n="footer_about_link">О компании</a></li></ul></div>
+    <div class="footer-col"><h4 data-i18n="footer_support">Поддержка</h4><ul><li><a data-i18n="footer_faq">FAQ</a></li><li><a data-i18n="footer_contacts">Контакты</a></li><li><a data-i18n="footer_privacy">Политика конфиденциальности</a></li><li><a href="/terms.html" data-i18n="footer_terms">Условия использования</a></li></ul></div>
+    <div class="footer-col"><h4 data-i18n="footer_legal">Юридические данные</h4><p><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer_address">UAE, Dubai, Business Bay, Prime Tower, Office 1502</span></p><p><a href="https://t.me/DIBPglobal" target="_blank" style="color:#888;text-decoration:none;"><i class="fab fa-telegram-plane"></i> <span data-i18n="footer_telegram">t.me/DIBPglobal</span></a></p><p><i class="fas fa-envelope"></i> DIBPglobal@gmail.com</p><p style="font-size:0.75rem;margin-top:5px;" data-i18n="footer_license">Лицензия: DMCC-2026-88421 | ИНН: 7842001992 | ОГРН: 1187847001234</p></div>
+</div><div class="footer-bottom"><p data-i18n="footer_copyright">© 2026 DIBP Global. Все права защищены.</p><p data-i18n="footer_altyn">"DIBP Global is a registered trademark in the UAE" 1 ALTYN = 1 мг золота.</p></div></div></footer>
+
+<script>
+// Функция перевода
+function t(key) {
+    return (translations && translations[key]) || key;
+}
+var translations = {};
+// ============ API CLIENT ============
+
+var captchaResult = 0;
+
+function generateCaptcha() {
+    var a = Math.floor(Math.random() * 10) + 1;
+    var b = Math.floor(Math.random() * 10) + 1;
+    captchaResult = a + b;
+    var el = document.getElementById('captchaQuestion');
+    if (el) el.textContent = a + ' + ' + b + ' = ?';
+}
+
+var API_URL = '/api';
+var api = {
+    token: localStorage.getItem('dibp_token') || null,
+    user: JSON.parse(localStorage.getItem('dibp_user') || 'null'),
+    
+    request: async function(url, opts) {
+        opts = opts || {};
+        var res = await fetch(API_URL + url, {
+            method: opts.method || 'GET',
+            headers: Object.assign({ 'Content-Type': 'application/json' }, this.token ? { 'Authorization': 'Bearer ' + this.token } : {}, opts.headers || {}),
+            body: opts.body || undefined
+        });
+        var data = await res.json();
+        if (!res.ok) throw new Error(data.message || 'Ошибка');
+        return data;
+    },
+    
+    register: async function(body) {
+    var d = await this.request('/auth/register', { method: 'POST', body: JSON.stringify(body) });
+    // Не сохраняем токен до подтверждения почты
+    return d;
+},
+    
+    login: async function(body) {
+        var d = await this.request('/auth/login', { method: 'POST', body: JSON.stringify(body) });
+        if (d.success && d.data && d.data.token) { this.token = d.data.token; this.user = d.data; this.save(); }
+        return d;
+    },
+    
+    getProfile: async function() { return await this.request('/auth/me'); },
+    getRates: async function() { return await this.request('/finance/rates'); },
+    getBalance: async function() { return await this.request('/finance/balance'); },
+    
+    deposit: async function(amount) {
+        return await this.request('/finance/deposit', { method: 'POST', body: JSON.stringify({ amount: amount }) });
+    },
+    
+    activateAccount: async function() { return await this.request('/finance/activate', { method: 'POST' }); },
+    
+    withdraw: async function(amount, currency, walletAddress) {
+        return await this.request('/finance/withdraw', { method: 'POST', body: JSON.stringify({ amount: amount, walletAddress: walletAddress || '' }) });
+    },
+    
+    getProjects: async function() { return await this.request('/projects'); },
+    
+    investInProject: async function(id, amount) {
+    var res = await fetch(API_URL + '/projects/' + id + '/invest', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token }, 
+        body: JSON.stringify({ amount: amount }) 
+    });
+    var data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Ошибка');
+    return data;
+},
+    
+	investConfirm: async function(id, code) {
+    var res = await fetch(API_URL + '/projects/' + id + '/invest-confirm', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token }, 
+        body: JSON.stringify({ code: code }) 
+    });
+    var data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Ошибка');
+    return data;
+},
+    
+    getPartnerStats: async function() { return await this.request('/partner/stats'); },
+    getReferralLink: async function() { return await this.request('/partner/referral-link'); },
+    getMarketingPlan: async function() { return await this.request('/partner/marketing-plan'); },
+    getL1Partners: async function() { return await this.request('/partner/l1'); },
+    getL2Partners: async function() { return await this.request('/partner/l2'); },
+    getAdminDashboard: async function() { return await this.request('/admin/dashboard'); },
+    getAdminWithdrawals: async function() { return await this.request('/admin/withdrawals'); },
+    
+    approveWithdrawal: async function(id) {
+        return await this.request('/admin/withdrawals/' + id + '/approve', { method: 'PUT' });
+    },
+    
+    rejectWithdrawal: async function(id, reason) {
+        return await this.request('/admin/withdrawals/' + id + '/reject', { method: 'PUT', body: JSON.stringify({ reason: reason }) });
+    },
+    
+    getAdminUsers: async function() { return await this.request('/admin/users'); },
+    
+    makeAdmin: async function(secret, userId) {
+        return await this.request('/admin/make-admin', { method: 'POST', body: JSON.stringify({ secret: secret, userId: userId }) });
+    },
+    
+    updateProfile: async function(data) { return await this.request('/auth/profile', { method: 'PUT', body: JSON.stringify(data) }); },
+    getMyInvestments: async function() { return await this.request('/projects/my/investments'); },
+    getTransactions: async function() { return await this.request('/finance/transactions'); },
+    getKYCStatus: async function() { return await this.request('/kyc/status'); },
+    
+    submitKYC: async function(formData) {
+        var res = await fetch(API_URL + '/kyc/submit', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + this.token },
+            body: formData
+        });
+        var data = await res.json();
+        if (!res.ok) throw new Error(data.message || 'Ошибка');
+        return data;
+    },
+    
+    logout: async function() {
+        try { await this.request('/auth/logout', { method: 'POST' }); } catch (e) {}
+        this.token = null; this.user = null; localStorage.clear();
+    },
+    
+    save: function() {
+        localStorage.setItem('dibp_token', this.token);
+        localStorage.setItem('dibp_user', JSON.stringify(this.user));
+    },
+    
+    isAuth: function() { return !!this.token && !!this.user; },
+    isAdmin: function() { return this.user && this.user.role === 'admin'; }
+};
+
+// ============ ФУНКЦИЯ ЗАГРУЗКИ ФАЗ ============
+async function loadPhases() {
+    var container = document.getElementById('phasesContainer');
+    if (!container) return;
+    
+    try {
+        var res = await fetch('/api/phases-data');
+        var r = await res.json();
+        
+        if (r.success && r.data) {
+            var phases = [
+                { key: 'phase1', title: 'Фаза 1 — Сбор средств', icon: '🌟', color: '#4caf50' },
+                { key: 'phase2', title: 'Фаза 2 — Реализация', icon: '🏗️', color: '#ff9800' },
+                { key: 'phase3', title: 'Фаза 3 — Запуск', icon: '🚀', color: '#2196f3' }
+            ];
+            
+            var html = '';
+            phases.forEach(function(p) {
+                var projects = r.data[p.key] || [];
+                html += '<div style="background:#1a1a1a;border:1px solid rgba(212,175,55,.3);border-radius:16px;padding:20px;">';
+                html += '<h3 style="color:#d4af37;text-align:center;margin-bottom:15px;font-size:1.2rem;">' + p.icon + ' ' + p.title + '</h3>';
+                
+                if (projects.length === 0) {
+                    html += '<p style="color:#888;text-align:center;padding:20px;">Нет проектов</p>';
+                } else {
+                    projects.forEach(function(proj) {
+                        html += '<div style="background:#111;padding:15px;border-radius:8px;margin-bottom:10px;">';
+                        html += '<p style="color:#fff;font-weight:600;font-size:1.1rem;">' + proj.title + '</p>';
+						if (proj.projectNumber) {
+    html += '<p style="color:#d4af37;font-size:0.75rem;">🆔 ' + proj.projectNumber + '</p>';
+}
+                        html += '<p style="color:#888;font-size:0.85rem;margin-top:5px;">ROI: <strong style="color:#f0d060;">' + proj.expectedROI + '%</strong></p>';
+                        
+                        if (p.key === 'phase1') {
+                            html += '<div style="background:#2a2a2a;border-radius:10px;height:8px;margin:10px 0;">';
+                            html += '<div style="background:' + p.color + ';height:8px;border-radius:10px;width:' + (proj.fundingProgress||0) + '%;"></div></div>';
+                            html += '<button class="btn btn-gold btn-sm" style="margin-top:8px;width:100%;" onclick="invest(\'' + proj._id + '\',\'' + (proj.title||'').replace(/'/g,'') + '\')">💰 Инвестировать</button>';
+                            html += '<button class="btn btn-outline-gold btn-sm" style="margin-top:5px;width:100%;" onclick="toggleProjectInfo(\'' + (proj.projectNumber || proj._id) + '\')">📋 Узнать больше</button>';
+						   html += '<div id="projInfo_' + proj._id + '" style="display:none;background:#0a0a0a;padding:10px;border-radius:8px;margin-top:8px;color:#b0b0b0;font-size:0.9rem;max-height:300px;overflow-y:auto;"></div>';
+                        } else if (p.key === 'phase2') {
+                            html += '<p style="color:#ff9800;font-size:0.85rem;">🔄 В реализации</p>';
+                        } else if (p.key === 'phase3') {
+                            html += '<p style="color:#2196f3;font-size:0.85rem;">✅ Запущен</p>';
+                        }
+                        
+                        html += '</div>';
+                    });
+                }
+                html += '</div>';
+            });
+            container.innerHTML = html;
+        }
+    } catch (e) {
+        container.innerHTML = '<p style="color:#f44;">Ошибка загрузки</p>';
+    }
+}
+
+async function updateStats() {
+    try {
+        var res = await fetch('/api/stats');
+        var r = await res.json();
+        if (r.success) {
+            var el1 = document.getElementById('statInvestors');
+            var el2 = document.getElementById('statProjects');
+            var el3 = document.getElementById('statPaid');
+            if (el1) el1.textContent = r.totalUsers + '+';
+            if (el2) el2.textContent = r.totalProjects + '+';
+            if (el3) el3.textContent = '$' + (r.totalPaid || 0).toFixed(1) + 'M+';
+        }
+    } catch (e) {}
+}
+
+// ============ DASHBOARD ============
+document.addEventListener('DOMContentLoaded', function() {
+  // Сохраняем оригинальные тексты
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        el.setAttribute('data-i18n-original', el.textContent);
+    });
+    setTimeout(function() { var p = document.getElementById('preloader'); if (p) p.classList.add('hidden'); }, 800);
+    // Авто-подстановка реферального ID из URL
+if (window.location.pathname.startsWith('/ref/')) {
+    var refId = window.location.pathname.replace('/ref/', '');
+    localStorage.setItem('dibp_ref', refId);
+    window.location.href = '/';
+}
+	initBurger();
+    initTabs();
+	generateCaptcha();
+    initSlider();
+    initLangs();
+    initHeaderBtns();
+    updateRates();
+    setInterval(updateRates, 30000);
+    if (api.isAuth() && api.user) afterAuth(api.user);
+    loadPhases();
+	updateStats();
+setInterval(updateStats, 60000);
+	if (!api.isAuth() || !api.user) {
+    document.getElementById('authForms').innerHTML = getDefForm();
+    initTabs();
+}
+
+// Закрытие всех окон при клике на пустое место
+document.addEventListener('click', function(e) {
+    if (e.target.closest('button') || e.target.closest('a') || e.target.closest('input') || e.target.closest('select') || e.target.closest('textarea') || e.target.closest('.burger-menu') || e.target.closest('.burger-overlay') || e.target.closest('#authForms') || e.target.closest('.submenu') || e.target.closest('.has-submenu')) {
+        return;
+    }
+    
+    document.querySelectorAll('.admin-panel').forEach(function(p) { p.style.display = 'none'; });
+    
+    var menu = document.getElementById('burgerMenu');
+    var overlay = document.getElementById('burgerOverlay');
+    if (menu) menu.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    
+    if (api.isAuth() && api.user && api.user.isActivated) {
+        var authForms = document.getElementById('authForms');
+        if (authForms && authForms.style.display !== 'none') {
+            showDash();
+        }
+    }
+});
+
+});
+
+function initLangs() {
+    var toggle = document.getElementById('langToggleBtn');
+    var dropdown = document.getElementById('langDropdown');
+    var label = document.getElementById('langLabel');
+    
+    if (toggle && dropdown) {
+        toggle.onclick = function(e) {
+            e.stopPropagation();
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        };
+    }
+    
+    document.onclick = function() {
+        if (dropdown) dropdown.style.display = 'none';
+    };
+    
+    document.querySelectorAll('.lang-option').forEach(function(btn) {
+        btn.onclick = function(e) {
+            e.stopPropagation();
+            var lang = btn.getAttribute('data-lang');
+            var names = { ru: 'RU', en: 'EN', ua: 'UA', zh: '中文', kg: 'KG', uz: 'UZ' };
+            if (label) label.textContent = names[lang] || lang;
+            dropdown.style.display = 'none';
+        };
+    });
+}
+
+function initBurger() {
+    var btn = document.getElementById('burgerBtn'), close = document.getElementById('burgerClose'), menu = document.getElementById('burgerMenu'), overlay = document.getElementById('burgerOverlay');
+    if (!btn || !menu) return;
+    btn.style.display = 'none';
+    btn.addEventListener('click', function() {
+        if (!api.isAuth()) { showNotif(t('login_required') || 'Войдите в аккаунт', 'info'); scrollToAuth(); return; }
+        menu.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; updateBurger();
+    });
+    function closeMenu() { menu.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    if (close) close.addEventListener('click', closeMenu);
+    if (overlay) overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+}
+
+function updateBurger() {
+    var btn = document.getElementById('burgerBtn'), nav = document.getElementById('burgerNav'), nameEl = document.getElementById('burgerName'), idEl = document.getElementById('burgerId'), avatarEl = document.getElementById('burgerAvatar');
+    if (api.isAuth() && api.user) {
+        if (btn) btn.style.display = 'flex';
+        if (nameEl) { nameEl.textContent = api.user.fullName || ''; nameEl.style.fontSize = '0.9rem'; }
+        if (idEl) { idEl.textContent = 'ID: ' + (api.user.userId || ''); idEl.style.fontSize = '0.75rem'; }
+       if (avatarEl && api.user && api.user.avatar) {
+    avatarEl.outerHTML = '<img src="/' + api.user.avatar + '" id="burgerAvatar" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid #d4af37;">';
+}
+        if (nav) {
+            if (api.user.isActivated) {
+                nav.innerHTML = '<ul>' +
+                    '<li><a onclick="closeAndGo(scrollToHero)"><i class="fas fa-home"></i> <span data-i18n="burger_home">Главная страница</span></a></li>' +
+                    '<li class="has-submenu"><a class="submenu-toggle"><i class="fas fa-wallet"></i> <span data-i18n="burger_finance">Финансы</span> <i class="fas fa-chevron-down arrow"></i></a><ul class="submenu"><li><a onclick="closeAndGo(showDeposit)"><span data-i18n="burger_deposit">💳 Пополнить</span></a></li><li><a onclick="closeAndGo(showWithdraw)"><span data-i18n="burger_withdraw">💰 Вывод</span></a></li><li><a onclick="closeAndGo(showCrypto)"><span data-i18n="burger_crypto">🪙 Крипто-кошелёк</span></a></li><li><a onclick="closeAndGo(showTransfer)"><span data-i18n="burger_transfer">💸 Внутренний перевод</span></a></li><li><a onclick="closeAndGo(showTx)"><span data-i18n="burger_transactions">📜 Транзакции</span></a></li></ul></li>' +
+					'<li class="has-submenu"><a class="submenu-toggle"><i class="fas fa-handshake"></i> <span data-i18n="burger_partnership">Партнёрство</span> <i class="fas fa-chevron-down arrow"></i></a><ul class="submenu"><li><a onclick="closeAndGo(showReferral)"><span data-i18n="burger_referral">🔗 Реферальная ссылка</span></a></li><li><a onclick="closeAndGo(showMarketingPlan)"><span data-i18n="burger_marketing">📊 Маркетинговый план</span></a></li><li><a onclick="closeAndGo(showPartnerStatus)"><span data-i18n="burger_my_status">⭐ Мой статус</span></a></li><li><a onclick="closeAndGo(showL1)"><span data-i18n="burger_partners">👥 Партнёры</span></a></li><li><a onclick="closeAndGo(showL2)"><span data-i18n="burger_subpartners">👤 Субпартнёры</span></a></li></ul></li>' +
+                    '<li class="has-submenu"><a class="submenu-toggle"><i class="fas fa-chart-line"></i> <span data-i18n="burger_investments">Мои инвестиции</span> <i class="fas fa-chevron-down arrow"></i></a><ul class="submenu"><li><a onclick="closeAndGo(showMyInv)"><span data-i18n="burger_my_investments">📁 Мои инвестиции</span></a></li><li><a onclick="closeAndGo(showTx)"><span data-i18n="burger_history">📜 История</span></a></li></ul></li>' +
+					'<li><a onclick="closeAndGo(showMyProjects)"><i class="fas fa-project-diagram"></i> <span data-i18n="burger_my_projects">Мои проекты</span></a></li>' +
+					'<li class="has-submenu"><a class="submenu-toggle"><i class="fas fa-user-cog"></i> <span data-i18n="burger_profile">Профиль</span> <i class="fas fa-chevron-down arrow"></i></a><ul class="submenu"><li><a onclick="closeAndGo(showProfile)"><span data-i18n="burger_data">👤 Данные</span></a></li><li><a onclick="closeAndGo(showVerif)"><span data-i18n="burger_verification">✅ Верификация</span></a></li><li><a onclick="closeAndGo(showHeir)"><span data-i18n="burger_heir">👨‍👩‍👧 Наследник</span></a></li></ul></li>' +
+                    '<li><a onclick="closeAndGo(showSupport)"><i class="fas fa-headset"></i> <span data-i18n="top_support">Поддержка</span></a></li>' +
+					'<li><a onclick="closeAndGo(scrollToAbout)"><i class="fas fa-building"></i> <span data-i18n="burger_about">О компании</span></a></li>' +
+                    (api.isAdmin() ? '<li><a onclick="closeAndGo(showAdmin)" style="color:#f0d060;"><i class="fas fa-crown"></i> <span data-i18n="burger_admin">Админ-панель</span></a></li>' : '') +
+                    '<li><a onclick="closeAndGo(logout)" style="color:#ff4444;"><i class="fas fa-sign-out-alt"></i> <span data-i18n="burger_logout">Выход</span></a></li></ul>';
+            } else {
+                nav.innerHTML = '<ul><li><a onclick="closeAndGo(showActiv)"><i class="fas fa-unlock"></i> <span data-i18n="burger_activate">Активировать</span></a></li><li><a onclick="closeAndGo(showDeposit)"><i class="fas fa-plus"></i> <span data-i18n="burger_deposit">Пополнить</span></a></li><li><a onclick="closeAndGo(logout)" style="color:#ff4444;"><i class="fas fa-sign-out-alt"></i> <span data-i18n="burger_logout">Выход</span></a></li></ul>';
+            }
+            initSubmenus();
+			updatePageTexts();
+        }
+        } else {
+        if (btn) btn.style.display = 'none';
+        if (nameEl) { nameEl.textContent = ''; nameEl.style.fontSize = '0.9rem'; }
+        if (idEl) { idEl.textContent = ''; idEl.style.fontSize = '0.75rem'; }
+    }
+}
+function initSubmenus() {
+    document.querySelectorAll('.submenu-toggle').forEach(function(t) {
+        t.onclick = function(e) {
+            e.preventDefault();
+            var p = t.closest('.has-submenu');
+            document.querySelectorAll('.has-submenu').forEach(function(x) { if (x !== p) x.classList.remove('active'); });
+            p.classList.toggle('active');
+        };
+    });
+}
+
+function closeAndGo(fn) {
+    document.getElementById('burgerMenu')?.classList.remove('active');
+    document.getElementById('burgerOverlay')?.classList.remove('active');
+    document.body.style.overflow = '';
+    if (fn) fn();
+}
+
+function initTabs() {
+    document.querySelectorAll('.auth-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.auth-tab').forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            document.querySelectorAll('.auth-form').forEach(function(f) { f.classList.remove('active'); f.style.display = 'none'; });
+            var target = document.getElementById(tab.dataset.tab + 'Form');
+            if (target) { target.classList.add('active'); target.style.display = 'block'; }
+        });
+    });
+    
+    // Автозаполнение реферального ID
+    var savedRef = localStorage.getItem('dibp_ref');
+    if (savedRef) {
+        var refInput = document.getElementById('regSponsorId');
+        if (refInput) refInput.value = savedRef;
+    }
+    
+    // Генерируем капчу
+    generateCaptcha();
+}
+
+function switchToLogin() { document.getElementById('loginTab')?.click(); }
+function switchToRegister() { document.getElementById('registerTab')?.click(); }
+
+async function handleLogin() {
+    var email = document.getElementById('loginEmail')?.value?.trim();
+    var pass = document.getElementById('loginPassword')?.value;
+    var btn = document.getElementById('loginSubmitBtn');
+    if (!email || !pass) { showNotif(t('fill_fields') || 'Заполните поля', 'error'); return; }
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loading-spinner"></span>'; }
+    try { 
+        var r = await api.login({ email: email, password: pass }); 
+        if (r.success) { 
+            var profile = await api.getProfile();
+            if (profile.success) { 
+                api.user = profile.data; 
+                api.save(); 
+                if (api.user.isVerified === false) {
+                    showNotif(t('email_not_verified') || '📧 Почта не подтверждена!', 'error');
+                    showVerificationForm(email);
+                    return;
+                }
+                showNotif(t('login_success') || 'Вход выполнен!', 'success'); 
+                afterAuth(api.user);
+            }
+        } else {
+            showNotif(r.message || t('error') || 'Ошибка', 'error');
+        }
+    } catch (e) {
+        showNotif(e.message || t('error') || 'Ошибка', 'error');
+    } finally {
+        if (btn) { btn.disabled = false; btn.innerHTML = t('login_btn') || 'Войти в аккаунт'; }
+    }
+}
+
+async function handleRegister() {
+    var firstName = document.getElementById('regFirstName')?.value?.trim();
+    var lastName = document.getElementById('regLastName')?.value?.trim();
+    var name = firstName + ' ' + lastName;
+    var email = document.getElementById('regEmail')?.value?.trim();
+    var pass = document.getElementById('regPassword')?.value;
+    var passConfirm = document.getElementById('regPasswordConfirm')?.value;
+    var phone = document.getElementById('regPhone')?.value?.trim();
+    var agree = document.getElementById('agreeTerms')?.checked;
+    var btn = document.getElementById('registerSubmitBtn');
+    
+    if (!firstName || !lastName || !email || !pass || !passConfirm) { showNotif(t('fill_all_fields') || 'Заполните все поля', 'error'); return; }
+    if (!phone) { showNotif(t('enter_phone') || 'Введите номер телефона', 'error'); return; }
+    if (pass !== passConfirm) { showNotif(t('passwords_not_match') || 'Пароли не совпадают', 'error'); return; }
+    if (pass.length < 8) { showNotif(t('password_min_length') || 'Пароль минимум 8 символов. Нужна хотя бы 1 заглавная буква и 1 строчная буква ', 'error'); return; }
+    if (!/[A-ZА-ЯЁ]/.test(pass)) { showNotif(t('password_uppercase') || 'Нужна хотя бы 1 заглавная буква', 'error'); return; }
+    if (!/[a-zа-яё]/.test(pass)) { showNotif(t('password_lowercase') || 'Нужна хотя бы 1 строчная буква', 'error'); return; }
+    if (!agree) { showNotif(t('accept_terms') || 'Примите условия', 'error'); return; }
+	
+	var captchaAnswer = parseInt(document.getElementById('captchaAnswer')?.value);
+if (captchaAnswer !== captchaResult) {
+    showNotif(t('captcha_error') || '❌ Неверный ответ на проверку', 'error');
+    generateCaptcha();
+    document.getElementById('captchaAnswer').value = '';
+    return;
+}
+    
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loading-spinner"></span>'; }
+    
+    try {
+        var sponsorId = document.getElementById('regSponsorId')?.value || localStorage.getItem('dibp_ref') || null;
+var r = await api.register({ fullName: name, email: email, password: pass, phone: phone, sponsorId: sponsorId });
+        if (r.success) {
+            showNotif(t('register_success') || 'Регистрация успешна! Проверьте почту.', 'success');
+			localStorage.setItem('dibp_temp_pass', pass);
+            showVerificationForm(email);
+        }
+    } catch (e) { showNotif(e.message, 'error'); }
+    finally { if (btn) { btn.disabled = false; btn.textContent = t('register_btn') || 'Создать аккаунт'; } }
+}
+
+function showVerificationForm(email) {
+    document.getElementById('authForms').innerHTML = 
+        '<div class="auth-card" style="text-align:center;">' +
+        '<h3 style="color:#d4af37;" data-i18n="verification_title">📧 Подтверждение</h3>' +
+        '<p style="color:#888;"><span data-i18n="verification_code_sent">Код отправлен на</span> ' + email + '</p>' +
+        '<input type="text" id="verifyCode" placeholder="' + (t('verification_placeholder') || 'Введите код из 6 цифр') + '" maxlength="6" style="text-align:center;font-size:1.5rem;letter-spacing:10px;">' +
+        '<button class="btn btn-gold btn-block" onclick="verifyCode(\'' + email + '\')" data-i18n="verification_btn">✅ Подтвердить</button>' +
+        '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="resendCode(\'' + email + '\')" data-i18n="resend_code_btn">📧 Отправить код повторно</button>' +
+        '</div>';
+}
+
+async function resendCode(email) {
+    showNotif(t('sending_code') || '⏳ Отправляем новый код...', 'info');
+    try {
+        var res = await fetch('/api/auth/forgot', { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({ email: email }) 
+        });
+        var r = await res.json();
+        if (r.success) {
+            showNotif(t('code_sent') || '✅ Новый код отправлен на почту!', 'success');
+        } else {
+            showNotif(t('code_send_error') || '❌ Не удалось отправить код', 'error');
+        }
+    } catch (e) { showNotif(t('error') || 'Ошибка', 'error'); }
+}
+
+async function verifyCode(email) {
+    var code = document.getElementById('verifyCode')?.value;
+    if (!code || code.length !== 6) { 
+        showNotif(t('enter_6_digits') || 'Введите 6 цифр', 'error'); 
+        return; 
+    }
+    try {
+        var res = await fetch('/api/auth/verify-code', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, code: code })
+        });
+        var r = await res.json();
+        if (r.success) { 
+            showNotif(t('email_verified') || '✅ Почта подтверждена!', 'success');
+            
+            var pass = localStorage.getItem('dibp_temp_pass');
+            if (pass) {
+                localStorage.removeItem('dibp_temp_pass');
+                try {
+                    var loginRes = await api.login({ email: email, password: pass });
+                    if (loginRes.success) {
+                        var profile = await api.getProfile();
+                        if (profile.success) {
+                            api.user = profile.data;
+                            api.save();
+                            afterAuth(api.user);
+                            return;
+                        }
+                    }
+                } catch(e) {}
+            }
+            document.getElementById('authForms').innerHTML = getDefForm();
+            initTabs();
+            switchToLogin();
+        } else {
+            showNotif('❌ ' + (r.message || t('wrong_code') || 'Неверный код'), 'error');
+        }
+    } catch (e) { 
+        showNotif(t('connection_error') || '❌ Ошибка соединения', 'error'); 
+    }
+}
+
+async function logout() { try { await api.logout(); } catch (e) {} afterLogout(); showNotif(t('logged_out') || 'Вы вышли', 'info'); location.href = '/'; }
+
+window.showActiv = showActiv;
+window.showDeposit = showDeposit;
+window.logout = logout;
+window.showDash = showDash;
+window.openActiv = openActiv;
+
+function openActiv() {
+    document.getElementById('authForms').style.display = 'block';
+    showActiv();
+}
+
+function afterAuth(data) {
+    if (data) { api.user = data; api.save(); }
+    document.getElementById('burgerBtn').style.display = 'flex';
+    document.getElementById('authForms').style.display = 'none';
+    document.getElementById('phasesSection').style.display = 'block';
+    updateBurger();
+    var nav = document.getElementById('navActions');
+    if (nav) {
+        if (api.user.isActivated) {
+            nav.innerHTML = '<button class="btn btn-gold btn-sm" onclick="logout()"><i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Выйти</span></button>';
+            showDash();
+        } else {
+            nav.innerHTML = '<span style="color:#ff9800;margin-right:10px;" data-i18n="nav_not_activated">⚠️ Не активирован</span><button class="btn btn-gold" onclick="openActiv()"><span data-i18n="nav_activate">Активировать</span></button><button class="btn btn-outline-gold btn-sm" onclick="logout()"><span data-i18n="nav_logout">Выйти</span></button>';
+        }
+    }
+    updateRates();
+	setTimeout(function() { updatePageTexts(); }, 100);
+}
+
+function showForgotForm() {
+    document.getElementById('authForms').innerHTML = 
+        '<div class="auth-card" style="text-align:center;">' +
+        '<h3 style="color:#d4af37;" data-i18n="reset_title">🔑 Восстановление пароля</h3>' +
+        '<input type="email" id="forgotEmail" placeholder="' + (t('reset_email_placeholder') || 'Введите email') + '">' +
+        '<button class="btn btn-gold btn-block" onclick="sendResetCode()" data-i18n="reset_send_btn">📧 Отправить код</button>' +
+        '<div id="resetArea" style="margin-top:15px;"></div>' +
+        '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goToLogin()" data-i18n="reset_back_btn">← Назад ко входу</button>' +
+        '</div>';
+}
+
+function goToLogin() {
+    document.getElementById('authForms').innerHTML = getDefForm();
+    initTabs();
+    switchToLogin();
+}
+
+async function sendResetCode() {
+    var email = document.getElementById('forgotEmail')?.value?.trim();
+    if (!email) { showNotif(t('enter_email') || 'Введите email', 'error'); return; }
+    showNotif(t('sending_code') || '⏳ Отправляем код...', 'info');
+    try {
+        var res = await fetch('/api/auth/forgot', { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({ email: email }) 
+        });
+        var r = await res.json();
+        if (r.success) {
+            showNotif(t('code_sent') || '✅ Код отправлен на почту!', 'success');
+            document.getElementById('resetArea').innerHTML = 
+                '<input type="text" id="resetCode" placeholder="' + (t('reset_code_placeholder') || 'Код из 6 цифр') + '" maxlength="6" style="text-align:center;font-size:1.2rem;letter-spacing:8px;">' +
+                '<input type="password" id="newPassword" placeholder="' + (t('reset_new_password_placeholder') || 'Новый пароль (мин 6 символов)') + '">' +
+                '<button class="btn btn-gold btn-block" onclick="resetPassword()" data-i18n="reset_change_btn">🔑 Сменить пароль</button>';
+        } else {
+            showNotif('❌ ' + (r.message || t('error') || 'Ошибка'), 'error');
+        }
+    } catch (e) { showNotif(t('connection_error') || 'Ошибка соединения', 'error'); }
+}
+
+async function resetPassword() {
+    var email = document.getElementById('forgotEmail')?.value?.trim();
+    var code = document.getElementById('resetCode')?.value?.trim();
+    var pass = document.getElementById('newPassword')?.value;
+    if (!code || !pass) { showNotif(t('fill_fields') || 'Заполните поля', 'error'); return; }
+    if (pass.length < 6) { showNotif(t('password_min_6') || 'Пароль мин 6 символов', 'error'); return; }
+    try {
+        var res = await fetch('/api/auth/reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, code: code, newPassword: pass }) });
+        var r = await res.json();
+        if (r.success) { showNotif(t('password_changed') || '✅ Пароль изменён!', 'success'); switchToLogin(); }
+    } catch (e) { showNotif(t('error') || 'Ошибка', 'error'); }
+}
+
+function afterLogout() {
+    document.getElementById('navActions').innerHTML = '';
+    document.getElementById('burgerBtn').style.display = 'none';
+    
+   document.getElementById('authForms').innerHTML = getDefForm();
+initTabs();
+setTimeout(generateCaptcha, 200);
+    
+    document.getElementById('phasesSection').style.display = 'none';
+	setTimeout(function() { updatePageTexts(); }, 100);
+}
+
+function goToProject() {
+    var inputId = document.getElementById('projectIdInput')?.value?.trim();
+    if (inputId) {
+        window.open('/project/' + inputId, '_blank');
+    }
+}
+
+function goBack() { if (api.user && api.user.isActivated) showDash(); else if (api.isAuth()) showActiv(); else location.href = '/'; }
+
+function showActiv() {
+    document.getElementById('authForms').innerHTML = '<div class="auth-card" style="text-align:center;"><div style="font-size:3rem;">🔒</div><h3 style="color:#d4af37;" data-i18n="activation_title">Активация аккаунта</h3><p style="color:#b0b0b0;" data-i18n="activation_text">Личный кабинет недоступен до активации.</p><div style="background:#111;padding:20px;border-radius:12px;margin:20px 0;"><p style="color:#888;" data-i18n="activation_cost_label">Стоимость:</p><p style="font-size:2rem;color:#f0d060;font-weight:700;">1000 ALTYN</p></div><p style="color:#ff9800;">💰 <span data-i18n="balance_label">Баланс:</span> <strong>' + (api.user?.balance||0) + ' ALTYN</strong></p><button class="btn btn-gold btn-block btn-lg" id="actBtn" data-i18n="activation_btn">🔓 Активировать</button><button class="btn btn-outline-gold btn-block" style="margin-top:10px;" id="depBtn" data-i18n="deposit_btn">💳 Пополнить</button></div>';
+    setTimeout(function() {
+        var ab = document.getElementById('actBtn');
+        var db = document.getElementById('depBtn');
+        if (ab) ab.onclick = doActivate;
+        if (db) db.onclick = showDeposit;
+    }, 100);
+	setTimeout(function() { updatePageTexts(); }, 100);
+}
+
+async function doActivate() {
+    if ((api.user?.balance||0) < 1000) { showNotif(t('insufficient_funds') || 'Недостаточно средств', 'error'); showDeposit(); return; }
+    
+    var btn = document.getElementById('actBtn');
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loading-spinner"></span> ' + (t('sending') || 'Отправка кода...'); }
+    
+    try {
+        // Шаг 1: Запрашиваем код
+        var res = await fetch('/api/finance/activate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token }
+        });
+        var r = await res.json();
+        
+        if (r.success && r.needCode) {
+            showNotif(t('code_sent') || '✅ Код отправлен на почту!', 'success');
+            
+            // Показываем поле для ввода кода
+            document.getElementById('authForms').innerHTML = 
+                '<div class="auth-card" style="text-align:center;">' +
+                '<h3 style="color:#d4af37;" data-i18n="activation_confirm_title">🔐 Подтверждение активации</h3>' +
+                '<p style="color:#888;" data-i18n="activation_confirm_text">Код отправлен на вашу почту</p>' +
+                '<input type="text" id="activationCode" placeholder="' + (t('verification_placeholder') || 'Введите код из 6 цифр') + '" maxlength="6" style="text-align:center;font-size:1.5rem;letter-spacing:10px;">' +
+                '<button class="btn btn-gold btn-block" id="confirmActBtn" data-i18n="activation_confirm_btn">✅ Подтвердить активацию</button>' +
+                '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()" data-i18n="cancel_btn">← Отмена</button>' +
+                '</div>';
+            
+            document.getElementById('confirmActBtn').addEventListener('click', confirmActivation);
+        } else {
+            showNotif(r.message || t('error') || 'Ошибка', 'error');
+            if (btn) { btn.disabled = false; btn.innerHTML = (t('activation_btn') || '🔓 Активировать'); }
+        }
+    } catch (e) { 
+        showNotif(e.message, 'error'); 
+        if (btn) { btn.disabled = false; btn.innerHTML = (t('activation_btn') || '🔓 Активировать'); }
+    }
+}
+
+async function confirmActivation() {
+    var code = document.getElementById('activationCode')?.value;
+    if (!code || code.length !== 6) { 
+        showNotif(t('enter_6_digits') || 'Введите 6 цифр', 'error'); 
+        return; 
+    }
+    
+    var btn = document.getElementById('confirmActBtn');
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loading-spinner"></span>'; }
+    
+    try {
+        var res = await fetch('/api/finance/activate-confirm', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ code: code })
+        });
+        var r = await res.json();
+        
+        if (r.success) {
+            showNotif(t('activated') || '✅ Активирован!', 'success');
+            var p = await api.getProfile();
+            if (p.success) { api.user = p.data; api.save(); }
+            afterAuth(api.user);
+        } else {
+            showNotif('❌ ' + (r.message || t('wrong_code') || 'Неверный код'), 'error');
+            if (btn) { btn.disabled = false; btn.innerHTML = (t('activation_confirm_btn') || '✅ Подтвердить активацию'); }
+        }
+    } catch (e) { 
+        showNotif('❌ ' + e.message, 'error'); 
+        if (btn) { btn.disabled = false; btn.innerHTML = (t('activation_confirm_btn') || '✅ Подтвердить активацию'); }
+    }
+}
+
+function showDash() {
+    if (!api.user || !api.user.isActivated) { showActiv(); return; }
+    var b = Number(api.user.balance || 0).toFixed(3);
+    var usd = (b * (window.currentAltynRate || 0.1445)).toFixed(2);
+    var avt = (api.user && api.user.avatar) ? api.user.avatar : '';
+    
+    document.getElementById('authForms').style.display = 'block';
+    document.getElementById('authForms').innerHTML = `
+        <div class="auth-card">
+            <div style="text-align:center;margin-bottom:15px;">
+                <div style="position:relative;display:inline-block;cursor:pointer;" onclick="document.getElementById('avatarInput').click()">
+                    ${avt ? '<img src="/' + avt + '" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid #d4af37;">' : '<div style="font-size:3rem;">👤</div>'}
+                </div>
+                <input type="file" id="avatarInput" accept="image/*" style="display:none;" onchange="uploadAvatar()">
+                <h3>${api.user.fullName||''}</h3>
+                <p style="color:#d4af37;">${api.user.userId||''}</p>
+            </div>
+            <div style="background:#111;padding:20px;border-radius:12px;margin-bottom:15px;text-align:center;">
+                <p style="color:#f0d060;font-size:2rem;font-weight:700;">${b} ALTYN</p>
+                <p style="color:#888;">≈ $${usd} USD</p>
+                <p style="color:#888;font-size:0.75rem;">1 ALTYN = ${(window.currentAltynRate||0.1445).toFixed(4)} USD</p>
+            </div>
+            <button class="btn btn-outline-gold btn-block" id="dashDeposit" style="margin-bottom:8px;" data-i18n="deposit_btn">💳 Пополнить</button>
+            <button class="btn btn-outline-gold btn-block" id="dashWithdraw" style="margin-bottom:8px;" data-i18n="withdraw_btn">💰 Вывести</button>
+			${api.isAdmin() ? '<button class="btn btn-gold btn-block" id="dashAdmin" data-i18n="admin_panel">👑 Админ-панель</button>' : ''}
+        </div>`;
+    
+    document.getElementById('dashDeposit').addEventListener('click', showDeposit);
+    document.getElementById('dashWithdraw').addEventListener('click', showWithdraw);
+    var adminBtn = document.getElementById('dashAdmin');
+    if (adminBtn) adminBtn.addEventListener('click', showAdmin);
+	setTimeout(function() { updatePageTexts(); }, 100);
+}
+
+function showDeposit() {
+    document.getElementById('authForms').style.display = 'block';
+    document.getElementById('authForms').innerHTML = `
+        <div class="auth-card">
+            <h3 style="text-align:center;" data-i18n="deposit_title">💳 Пополнение</h3>
+            
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+                <button class="btn btn-outline-gold" onclick="showCardDeposit()" data-i18n="deposit_card_btn">💳 Карта</button>
+                <button class="btn btn-outline-gold" onclick="showCryptoDepositPopup()" data-i18n="deposit_crypto_btn">🪙 Крипто</button>
+            </div>
+            
+            <div id="depositMethodContent"></div>
+            <button class="btn btn-outline-gold btn-block" onclick="goBack()" data-i18n="deposit_back_btn">← Назад</button>
+        </div>`;
+		setTimeout(function() { updatePageTexts(); }, 100);
+}
+
+function showCryptoDepositPopup() {
+    var c = document.getElementById('depositMethodContent');
+    if (!c) return;
+    
+    c.innerHTML = '<p style="text-align:center;color:#888;">' + (t('loading') || 'Загрузка адреса...') + '</p>';
+    
+    fetch('/api/crypto/deposit-info', { headers: { 'Authorization': 'Bearer ' + api.token } })
+    .then(function(res) { return res.json(); })
+    .then(function(r) {
+        if (r.success) {
+            var d = r.data;
+            c.innerHTML = `
+                <div style="background:#111;padding:15px;border-radius:8px;text-align:center;margin-top:10px;">
+                    <p style="color:#fff;">📤 <span data-i18n="crypto_address_label">Адрес USDT (TRC-20):</span></p>
+                    <p style="color:#d4af37;font-size:0.8rem;word-break:break-all;background:#000;padding:10px;border-radius:8px;">${d.address}</p>
+                    <p style="color:#ff9800;">⚠️ <span data-i18n="crypto_memo_label">MEMO:</span> <strong>${d.memo}</strong></p>
+                    <p style="color:#888;"><span data-i18n="crypto_network">Сеть:</span> ${d.network} | <span data-i18n="crypto_min_amount">Мин:</span> ${d.minAmount}</p>
+                    <button class="btn btn-gold btn-block" style="margin-top:10px;" onclick="verifyMyPayment()" data-i18n="crypto_check_btn">🔍 Проверить платёж</button>
+                </div>`;
+        } else {
+            c.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>';
+        }
+    });
+}
+
+async function verifyMyPayment() {
+    var txId = prompt(t('enter_txid') || 'Введите TX ID:');
+    if (!txId) return;
+    showNotif(t('checking') || '⏳ Проверяем...', 'info');
+    try {
+        var r = await api.deposit(100);
+        if (r.success) { showNotif(t('credited') || '✅ Зачислено!', 'success'); goBack(); }
+    } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+function showCardDeposit() {
+    var rate = window.currentAltynRate || 0.1445;
+    var c = document.getElementById('depositMethodContent');
+    if (!c) return;
+    
+    c.innerHTML = `
+        <div style="background:#111;padding:15px;border-radius:8px;">
+            <div class="form-group"><label data-i18n="amount_usd">Сумма (USD)</label><input type="number" id="cardAmount" value="100" min="1"></div>
+            <p style="color:#f0d060;text-align:center;" id="estAltynCard">~${(100/rate).toFixed(0)} ALTYN</p>
+            <p style="color:#888;font-size:0.75rem;text-align:center;">${t('rate_label') || 'Курс:'} 1 ALTYN = ${rate.toFixed(4)} USD</p>
+            <div class="form-group"><label data-i18n="card_number">Номер карты</label><input type="text" id="cardNumber" placeholder="1234 5678 9012 3456"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div class="form-group"><label data-i18n="card_expiry">ММ/ГГ</label><input type="text" id="cardExpiry" placeholder="ММ/ГГ"></div>
+                <div class="form-group"><label data-i18n="card_cvv">CVV</label><input type="text" id="cardCVV" placeholder="CVV"></div>
+            </div>
+            <div class="form-group"><label data-i18n="card_holder">Имя держателя</label><input type="text" id="cardHolder" placeholder="IVAN IVANOV"></div>
+            <button class="btn btn-gold btn-block" onclick="processCardPayment()" data-i18n="card_pay_btn">💳 Оплатить</button>
+        </div>`;
+    
+    document.getElementById('cardAmount')?.addEventListener('input', function(e) {
+        var r = window.currentAltynRate || 0.1445;
+        document.getElementById('estAltynCard').textContent = '~' + (e.target.value / r).toFixed(0) + ' ALTYN';
+    });
+}
+
+async function processCardPayment() {
+    var amount = parseFloat(document.getElementById('cardAmount')?.value);
+    var cardNumber = document.getElementById('cardNumber')?.value?.trim();
+    var cardHolder = document.getElementById('cardHolder')?.value?.trim();
+    
+    if (!amount || amount < 1) { showNotif(t('min_amount_1') || '❌ Минимум $1', 'error'); return; }
+    if (!cardNumber || cardNumber.length < 16) { showNotif(t('enter_card_number') || '❌ Введите номер карты', 'error'); return; }
+    if (!cardHolder) { showNotif(t('enter_card_holder') || '❌ Введите имя держателя', 'error'); return; }
+    
+    showNotif(t('processing_stripe') || '⏳ Обрабатываем платёж через Stripe...', 'info');
+    
+    try {
+        var res = await fetch('/api/stripe/create-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ amount: amount })
+        });
+        var r = await res.json();
+        
+        if (r.success) {
+            var conf = await fetch('/api/stripe/confirm-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+                body: JSON.stringify({ paymentId: r.paymentId, amount: amount })
+            });
+            var c = await conf.json();
+            
+            if (c.success) {
+                showNotif('✅ ' + c.message, 'success');
+                goBack();
+            } else {
+                showNotif('❌ ' + (c.message || t('payment_failed') || 'Платёж не прошёл'), 'error');
+            }
+        } else {
+            showNotif('❌ ' + (r.message || t('error') || 'Ошибка'), 'error');
+        }
+    } catch (e) {
+        showNotif('❌ ' + (t('error') || 'Ошибка') + ': ' + e.message, 'error');
+    }
+}
+
+async function doDeposit() {
+    var a = parseFloat(document.getElementById('depAmt')?.value);
+    if (!a) return showNotif(t('enter_amount') || 'Введите сумму', 'error');
+    try { var r = await api.deposit(a); if (r.success) { showNotif(r.message, 'success'); goBack(); } } catch (e) { showNotif(e.message, 'error'); }
+}
+
+function showWithdraw() {
+    if (!api.user || !api.user.isActivated) { showNotif(t('activate_required') || '🔒 Активируйте аккаунт', 'error'); return; }
+    document.getElementById('authForms').innerHTML = '<div class="auth-card"><h3 style="text-align:center;" data-i18n="withdraw_title">💰 Вывод средств</h3><div class="form-group"><label data-i18n="withdraw_amount_label">Сумма (ALTYN)</label><input type="number" id="wAmt" value="10" min="6"></div><div class="form-group"><label data-i18n="withdraw_wallet_label">Кошелёк USDT (TRC-20) *</label><input type="text" id="wAddr" placeholder="TXxxxxxxxxxxxxx" required></div><div style="background:#111;padding:15px;border-radius:8px;margin-bottom:15px;"><p style="color:#888;">💡 <span data-i18n="withdraw_fee_label">Комиссия:</span> <strong style="color:#d4af37;">5 ALTYN</strong></p><p style="color:#ff9800;">💰 <span data-i18n="withdraw_balance_label">Баланс:</span> <strong>' + Number(api.user?.balance||0).toFixed(3) + ' ALTYN</strong></p><p style="color:#888;font-size:0.8rem;" id="wTotal">' + (t('withdraw_total_label') || 'Итого к списанию:') + ' 15 ALTYN (включая комиссию 5)</p><p style="color:#888;font-size:0.75rem;" id="wUSD">≈ $2.17 USD</p></div><button class="btn btn-gold btn-block" id="wBtn" data-i18n="withdraw_btn">📤 Создать заявку</button><button class="btn btn-outline-gold btn-block" style="margin-top:10px;" id="wBack" data-i18n="deposit_back_btn">← Назад</button></div>';
+    setTimeout(function() {
+        var wb = document.getElementById('wBtn');
+        var wback = document.getElementById('wBack');
+        if (wb) wb.onclick = doWithdraw;
+        if (wback) wback.onclick = goBack;
+        document.getElementById('wAmt').addEventListener('input', function(e) {
+            var a = parseFloat(e.target.value) || 0;
+            var rate = window.currentAltynRate || 0.1445;
+            var total = a + 5;
+            var usd = (total * rate).toFixed(2);
+            document.getElementById('wTotal').textContent = (t('withdraw_total_label') || 'Итого к списанию:') + ' ' + total + ' ALTYN (включая комиссию 5)';
+            var usdEl = document.getElementById('wUSD');
+            if (usdEl) usdEl.textContent = '≈ $' + usd + ' USD';
+        });
+    }, 100);
+	setTimeout(function() { updatePageTexts(); }, 100);
+}
+
+async function doWithdraw() {
+    var a = parseFloat(document.getElementById('wAmt')?.value);
+    var addr = document.getElementById('wAddr')?.value?.trim();
+    var btn = document.getElementById('wBtn');
+    
+    if (!addr) { showNotif(t('enter_wallet') || '❌ Введите адрес кошелька', 'error'); return; }
+    if (!a || a < 6) { showNotif(t('min_withdraw') || '❌ Минимум 6 ALTYN', 'error'); return; }
+    
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loading-spinner"></span> ' + (t('sending') || 'Отправка кода...'); }
+    
+    try {
+        // Шаг 1: Запрашиваем код
+        var res = await fetch('/api/finance/withdraw', { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token }, 
+            body: JSON.stringify({ amount: a, walletAddress: addr || '' }) 
+        });
+        var r = await res.json();
+        
+        if (r.success && r.needCode) {
+            showNotif(t('code_sent') || '✅ Код отправлен на почту!', 'success');
+            
+            // Показываем поле для ввода кода
+            document.getElementById('authForms').innerHTML = 
+                '<div class="auth-card" style="text-align:center;">' +
+                '<h3 style="color:#d4af37;" data-i18n="withdraw_confirm_title">🔐 Подтверждение вывода</h3>' +
+                '<p style="color:#888;" data-i18n="withdraw_confirm_text">Код отправлен на вашу почту</p>' +
+                '<p style="color:#f0d060;">Сумма: ' + a + ' ALTYN + комиссия 5 ALTYN</p>' +
+                '<input type="text" id="withdrawCode" placeholder="' + (t('verification_placeholder') || 'Введите код из 6 цифр') + '" maxlength="6" style="text-align:center;font-size:1.5rem;letter-spacing:10px;">' +
+                '<button class="btn btn-gold btn-block" id="confirmWithdrawBtn" data-i18n="withdraw_confirm_btn">✅ Подтвердить вывод</button>' +
+                '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()" data-i18n="cancel_btn">← Отмена</button>' +
+                '</div>';
+            
+            document.getElementById('confirmWithdrawBtn').addEventListener('click', confirmWithdraw);
+        } else {
+            showNotif('❌ ' + (r.message || t('error') || 'Ошибка'), 'error');
+            if (btn) { btn.disabled = false; btn.innerHTML = (t('withdraw_btn') || '📤 Создать заявку'); }
+        }
+    } catch (e) { 
+        showNotif('❌ ' + e.message, 'error'); 
+        if (btn) { btn.disabled = false; btn.innerHTML = (t('withdraw_btn') || '📤 Создать заявку'); }
+    }
+}
+
+async function confirmWithdraw() {
+    var code = document.getElementById('withdrawCode')?.value;
+    if (!code || code.length !== 6) { 
+        showNotif(t('enter_6_digits') || 'Введите 6 цифр', 'error'); 
+        return; 
+    }
+    
+    var btn = document.getElementById('confirmWithdrawBtn');
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loading-spinner"></span>'; }
+    
+    try {
+        var res = await fetch('/api/finance/withdraw-confirm', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ code: code })
+        });
+        var r = await res.json();
+        
+        if (r.success) {
+            showNotif('✅ ' + r.message, 'success');
+            var p = await api.getProfile();
+            if (p.success) { api.user = p.data; api.save(); }
+            goBack();
+        } else {
+            showNotif('❌ ' + (r.message || t('wrong_code') || 'Неверный код'), 'error');
+            if (btn) { btn.disabled = false; btn.innerHTML = (t('withdraw_confirm_btn') || '✅ Подтвердить вывод'); }
+        }
+    } catch (e) { 
+        showNotif('❌ ' + e.message, 'error'); 
+        if (btn) { btn.disabled = false; btn.innerHTML = (t('withdraw_confirm_btn') || '✅ Подтвердить вывод'); }
+    }
+}
+
+function showTransfer() {
+    if (!api.user || !api.user.isActivated) { showNotif(t('activate_required') || '🔒 Активируйте аккаунт', 'error'); return; }
+    
+    document.getElementById('authForms').innerHTML = 
+        '<div class="auth-card">' +
+        '<h3 style="text-align:center;" data-i18n="transfer_title">💸 Перевод ALTYN</h3>' +
+        '<input type="text" id="transferRecipient" placeholder="' + (t('transfer_recipient_placeholder') || 'ID получателя (DIBP-XXXX)') + '">' +
+        '<input type="number" id="transferAmount" placeholder="' + (t('transfer_amount_placeholder') || 'Сумма (ALTYN)') + '" min="1">' +
+        '<p style="color:#888;font-size:0.8rem;">' + (t('transfer_fee_info') || 'Комиссия: 5 ALTYN | Баланс:') + ' ' + (api.user?.balance||0) + ' ALTYN</p>' +
+        '<button class="btn btn-gold btn-block" id="sendTransferBtn" data-i18n="transfer_send_btn">📤 Отправить</button>' +
+        '<div id="transferConfirm" style="margin-top:15px;"></div>' +
+        '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" id="transferBack" data-i18n="deposit_back_btn">← Назад</button>' +
+        '</div>';
+    document.getElementById('sendTransferBtn').addEventListener('click', sendTransfer);
+    document.getElementById('transferBack').addEventListener('click', goBack);
+}
+
+async function sendTransfer() {
+    var recipient = document.getElementById('transferRecipient')?.value?.trim();
+    var amount = parseFloat(document.getElementById('transferAmount')?.value);
+    
+    if (!recipient) { showNotif(t('enter_recipient') || 'Введите ID получателя', 'error'); return; }
+    if (!amount || amount < 1) { showNotif(t('min_transfer') || 'Минимум 1 ALTYN', 'error'); return; }
+    
+    try {
+        var res = await fetch('/api/finance/transfer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ recipientId: recipient, amount: amount })
+        });
+        var r = await res.json();
+        
+        if (r.success && r.needCode) {
+            document.getElementById('transferConfirm').innerHTML = 
+                '<p style="color:#4caf50;">' + (t('transfer_code_sent') || '✅ Код отправлен на почту!') + '</p>' +
+                '<input type="text" id="transferCode" placeholder="' + (t('transfer_code_placeholder') || 'Код из 6 цифр') + '" maxlength="6" style="text-align:center;font-size:1.2rem;letter-spacing:8px;">' +
+                '<button class="btn btn-gold btn-block" id="confirmTransferBtn" data-i18n="transfer_confirm_btn">✅ Подтвердить перевод</button>';
+            document.getElementById('confirmTransferBtn').addEventListener('click', confirmTransfer);
+        }
+    } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+async function confirmTransfer() {
+    var code = document.getElementById('transferCode')?.value?.trim();
+    if (!code || code.length !== 6) { showNotif(t('enter_6_digits') || 'Введите 6 цифр', 'error'); return; }
+    
+    var btn = document.getElementById('confirmTransferBtn');
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loading-spinner"></span>'; }
+    
+    try {
+        var res = await fetch('/api/finance/transfer-confirm', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ code: code })
+        });
+        var r = await res.json();
+        if (r.success) {
+            showNotif('✅ ' + r.message, 'success');
+            var p = await api.getProfile();
+            if (p.success) { api.user = p.data; api.save(); }
+            goBack();
+        } else {
+            showNotif('❌ ' + (r.message || t('wrong_code') || 'Неверный код'), 'error');
+            if (btn) { btn.disabled = false; btn.innerHTML = (t('transfer_confirm_btn') || '✅ Подтвердить перевод'); }
+        }
+    } catch (e) { 
+        showNotif('❌ ' + e.message, 'error'); 
+        if (btn) { btn.disabled = false; btn.innerHTML = (t('transfer_confirm_btn') || '✅ Подтвердить перевод'); }
+    }
+}
+
+async function showProjects() {
+    document.getElementById('authForms').innerHTML = 
+        '<div class="auth-card" style="max-width:500px;">' +
+        '<h3 style="text-align:center;" data-i18n="projects_title">📈 Проекты</h3>' +
+        '<div style="display:flex;gap:10px;margin-bottom:15px;">' +
+'<input type="text" id="projectIdInput" placeholder="🆔 ID проекта (DIBP-0001)" style="flex:1;">' +
+'<button class="btn btn-outline-gold btn-sm" onclick="goToProject()">🔍 Найти</button>' +
+'</div>' +
+		'<input type="text" id="projectSearch" placeholder="' + (t('search_placeholder') || '🔍 Поиск проектов...') + '" style="margin-bottom:15px;" oninput="filterProjects()">' +
+        '<div id="plist" style="max-height:350px;overflow-y:auto;">' + (t('loading') || 'Загрузка...') + '</div>' +
+        '<button class="btn btn-outline-gold btn-block" style="margin-top:15px;" onclick="goBack()" data-i18n="deposit_back_btn">← Назад</button>' +
+        '</div>';
+    try { 
+        var r = await api.getProjects(); 
+        window._projects = r.data || [];
+        filterProjects();
+    } catch (e) { 
+        document.getElementById('plist').innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>'; 
+    }
+	setTimeout(function() { updatePageTexts(); }, 100);
+}
+
+function filterProjects() {
+    var q = (document.getElementById('projectSearch')?.value || '').toLowerCase();
+    var projects = window._projects || [];
+    var filtered = projects.filter(function(p) { 
+        return !q || (p.title||'').toLowerCase().includes(q) || (p.shortDescription||'').toLowerCase().includes(q) || (p.category||'').toLowerCase().includes(q);
+    });
+    var el = document.getElementById('plist');
+    if (!el) return;
+    if (filtered.length) {
+        el.innerHTML = filtered.map(function(p) { 
+            return '<div style="background:#111;padding:15px;border-radius:8px;margin-bottom:10px;"><h4 style="color:#fff;">' + p.title + '</h4><p style="color:#888;">ROI: ' + p.expectedROI + '% | ' + (p.fundingProgress||0) + '% ' + (t('collected') || 'собрано') + '</p><button class="btn btn-gold btn-block btn-sm" onclick="invest(\'' + p._id + '\',\'' + (p.title||'').replace(/'/g,'') + '\')" data-i18n="invest_btn">Инвестировать</button></div>'; 
+        }).join('');
+    } else {
+        el.innerHTML = '<p style="text-align:center;color:#888;" data-i18n="nothing_found">Ничего не найдено</p>';
+    }
+}
+
+async function invest(id, title) { 
+    document.getElementById('authForms').innerHTML = 
+        '<div class="auth-card" style="text-align:center;">' +
+        '<h3 style="color:#d4af37;">💰 Инвестировать</h3>' +
+        '<p style="color:#fff;font-size:1.1rem;">' + title + '</p>' +
+        '<div class="form-group">' +
+        '<label style="color:#888;">Сумма (ALTYN)</label>' +
+        '<input type="number" id="investAmountInput" placeholder="10" min="1" style="text-align:center;font-size:1.2rem;">' +
+        '</div>' +
+        '<button class="btn btn-gold btn-block" id="sendInvestCodeBtn">📧 Получить код подтверждения</button>' +
+        '<div id="investCodeArea" style="margin-top:15px;"></div>' +
+        '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()">← Назад</button>' +
+        '</div>';
+    
+    document.getElementById('sendInvestCodeBtn').addEventListener('click', async function() {
+        var amount = parseFloat(document.getElementById('investAmountInput')?.value);
+        if (!amount || amount < 1) { 
+            showNotif('Введите сумму', 'error'); 
+            return; 
+        }
+        
+        var btn = document.getElementById('sendInvestCodeBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="loading-spinner"></span> Отправка кода...';
+        
+        try {
+            var r = await api.investInProject(id, amount);
+            
+            if (r && r.needCode) {
+                showNotif('✅ Код отправлен на почту!', 'success');
+                document.getElementById('investAmountInput').disabled = true;
+                
+                document.getElementById('investCodeArea').innerHTML = 
+                    '<div style="border-top:1px solid #2a2a2a;padding-top:15px;margin-top:15px;">' +
+                    '<p style="color:#f0d060;margin-bottom:10px;">Сумма: ' + amount + ' ALTYN</p>' +
+                    '<input type="text" id="investCode" placeholder="Введите код из 6 цифр" maxlength="6" style="text-align:center;font-size:1.5rem;letter-spacing:10px;">' +
+                    '<button class="btn btn-gold btn-block" id="confirmInvestBtn">✅ Подтвердить инвестицию</button>' +
+                    '</div>';
+                
+                document.getElementById('confirmInvestBtn').addEventListener('click', async function() {
+                    var code = document.getElementById('investCode')?.value;
+                    if (!code || code.length !== 6) { 
+                        showNotif('Введите 6 цифр', 'error'); 
+                        return; 
+                    }
+                    
+                    var confirmBtn = document.getElementById('confirmInvestBtn');
+                    confirmBtn.disabled = true;
+                    confirmBtn.innerHTML = '<span class="loading-spinner"></span>';
+                    
+                    try {
+                        var confirmData = await api.investConfirm(id, code);
+                        
+                        if (confirmData.success) {
+                            showNotif('✅ ' + confirmData.message, 'success');
+                            var p = await api.getProfile();
+                            if (p.success) { api.user = p.data; api.save(); }
+                            goBack();
+                        } else {
+                            showNotif('❌ ' + (confirmData.message || 'Неверный код'), 'error');
+                            confirmBtn.disabled = false;
+                            confirmBtn.innerHTML = '✅ Подтвердить инвестицию';
+                        }
+                    } catch (e) {
+                        showNotif('❌ ' + e.message, 'error');
+                        confirmBtn.disabled = false;
+                        confirmBtn.innerHTML = '✅ Подтвердить инвестицию';
+                    }
+                });
+            } else {
+                showNotif(r.message || 'Ошибка', 'error');
+            }
+        } catch (e) {
+            showNotif(e.message, 'error');
+        }
+        btn.disabled = false;
+        btn.innerHTML = '📧 Получить код подтверждения';
+    });
+}
+
+async function showReferral() { try { var r = await api.getReferralLink(); if (r.success) { document.getElementById('authForms').innerHTML = '<div class="auth-card" style="text-align:center;"><h3 data-i18n="referral_title">🔗 Реферальная ссылка</h3><div style="background:#111;padding:15px;border-radius:8px;margin:15px 0;word-break:break-all;"><p style="color:#d4af37;">' + r.data.referralLink + '</p></div><p style="color:#888;">ID: ' + r.data.referralId + '</p><button class="btn btn-outline-gold btn-block" onclick="goBack()" data-i18n="deposit_back_btn">← Назад</button></div>'; } } catch (e) { showNotif(t('error') || 'Ошибка', 'error'); } }
+
+function showMarketingPlan() { 
+    document.getElementById('authForms').innerHTML = 
+        '<div class="auth-card"><h3 style="text-align:center;color:#d4af37;" data-i18n="marketing_plan_title">📊 Маркетинг-план</h3>' +
+        '<div style="background:#111;padding:15px;border-radius:8px;margin:10px 0;"><h4 style="color:#fff;" data-i18n="partner_leader">🌟 Партнёр-Лидер</h4><p style="color:#888;" data-i18n="partner_leader_condition">1+ привлечённых партнёров-инвесторов</p><p style="color:#f0d060;" data-i18n="partner_leader_bonus">Бонус L1: 5% от прибыли инвестора | Бонус L2: 2% от прибыли инвестора</p></div>' +
+        '<div style="background:#111;padding:15px;border-radius:8px;margin:10px 0;"><h4 style="color:#fff;" data-i18n="vip_partner">⭐ VIP Партнёр</h4><p style="color:#888;" data-i18n="vip_partner_condition">1000+ привлечённых партнёров-инвесторов</p><p style="color:#f0d060;" data-i18n="vip_partner_bonus">Бонус L1: 7% от прибыли инвестора | Бонус L2: 3% от прибыли инвестора</p></div>' +
+        '<div style="background:#111;padding:15px;border-radius:8px;margin:10px 0;"><h4 style="color:#fff;" data-i18n="profit_formula_title">💰 Формула прибыли проекта</h4><p style="color:#888;" data-i18n="profit_formula">20% — Компания | 40% — Инвесторы | 40% — Бизнес-партнёр</p><p style="color:#888;font-size:0.8rem;" data-i18n="profit_formula_note">Партнёрские бонусы выплачиваются из доли компании (20%)</p></div>' +
+        '<button class="btn btn-outline-gold btn-block" style="margin-top:15px;" onclick="goBack()" data-i18n="deposit_back_btn">← Назад</button></div>'; 
+}
+
+async function showPartnerStatus() { 
+    try { 
+        var r = await api.getPartnerStats(); 
+        if (r.success) { 
+            var d = r.data;
+            var l1Bonus = d.partnerStatus === 'vip_partner' ? '7%' : d.partnerStatus === 'partner_leader' ? '5%' : '0%';
+            var l2Bonus = d.partnerStatus === 'vip_partner' ? '3%' : d.partnerStatus === 'partner_leader' ? '2%' : '0%';
+            document.getElementById('authForms').innerHTML = 
+                '<div class="auth-card"><h3 style="text-align:center;" data-i18n="partner_status_title">⭐ Мой статус</h3>' +
+                '<div style="background:#111;padding:15px;border-radius:8px;margin:15px 0;">' +
+                '<p style="color:#888;"><span data-i18n="status">Статус:</span> <strong style="color:#d4af37;">' + (d.partnerStatus||t('none')||'Нет') + '</strong></p>' +
+                '<p style="color:#888;"><span data-i18n="partners_l1">👥 Партнёров L1:</span> <strong>' + (d.l1Count||0) + '</strong></p>' +
+                '<p style="color:#888;"><span data-i18n="partners_l2">👤 Субпартнёров L2:</span> <strong>' + (d.l2Count||0) + '</strong></p>' +
+                '<p style="color:#888;"><span data-i18n="bonus_l1">💰 Бонус L1:</span> <strong>' + l1Bonus + ' ' + (t('from_investor_profit') || 'от прибыли инвестора') + '</strong></p>' +
+                '<p style="color:#888;"><span data-i18n="bonus_l2">💰 Бонус L2:</span> <strong>' + l2Bonus + ' ' + (t('from_investor_profit') || 'от прибыли инвестора') + '</strong></p>' +
+                '</div><button class="btn btn-outline-gold btn-block" onclick="goBack()" data-i18n="deposit_back_btn">← Назад</button></div>'; 
+        } 
+    } catch (e) { showNotif(t('error') || 'Ошибка', 'error'); } 
+}
+
+async function showL1() { try { var r = await api.getL1Partners(); var html = r.success && r.data && r.data.length ? r.data.map(function(p) { return '<div style="background:#111;padding:10px;border-radius:8px;margin-bottom:8px;"><p style="color:#d4af37;font-size:0.8rem;">' + p.userId + '</p></div>'; }).join('') : '<p style="color:#888;" data-i18n="no_partners">Нет партнёров</p>'; document.getElementById('authForms').innerHTML = '<div class="auth-card"><h3 data-i18n="partners_l1_title">👥 Партнёры L1</h3><div style="max-height:400px;overflow-y:auto;">' + html + '</div><button class="btn btn-outline-gold btn-block" onclick="goBack()" data-i18n="deposit_back_btn">← Назад</button></div>'; } catch (e) { showNotif(t('error') || 'Ошибка', 'error'); } }
+
+async function showL2() {
+    if (!api.user || !api.user.isActivated) { showNotif(t('activate_required') || '🔒 Активируйте аккаунт', 'error'); return; }
+    
+    document.getElementById('authForms').innerHTML = '<div class="auth-card"><h3 data-i18n="partners_l2_title">👤 Субпартнёры L2</h3><div id="l2List" style="max-height:400px;overflow-y:auto;"><p style="color:#888;text-align:center;">Загрузка...</p></div><button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()" data-i18n="deposit_back_btn">← Назад</button></div>';
+    
+    try {
+        var res = await fetch('/api/partner/l2', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        var el = document.getElementById('l2List');
+        
+        if (r.success && r.data && r.data.length > 0) {
+            el.innerHTML = r.data.map(function(p) {
+                return '<div style="background:#111;padding:10px;border-radius:8px;margin-bottom:8px;">' +
+                    '<p style="color:#d4af37;font-size:0.8rem;">' + p.userId + '</p>' +
+                    '</div>';
+            }).join('');
+        } else {
+            el.innerHTML = '<p style="text-align:center;color:#888;padding:20px;">📭 Нет субпартнёров</p>';
+        }
+    } catch (e) {
+        document.getElementById('l2List').innerHTML = '<p style="color:#f44;">Ошибка загрузки</p>';
+    }
+}
+
+async function showMyInv() {
+    if (!api.user || !api.user.isActivated) { showNotif(t('activate_required') || '🔒 Активируйте аккаунт', 'error'); return; }
+    
+    document.getElementById('authForms').innerHTML = '<div class="auth-card" style="max-width:550px;"><h3 style="text-align:center;" data-i18n="my_investments_title">📁 Мои инвестиции</h3><div id="myInvList" style="max-height:400px;overflow-y:auto;"><p style="color:#888;text-align:center;" data-i18n="loading">Загрузка...</p></div><button class="btn btn-outline-gold btn-block" style="margin-top:15px;" onclick="goBack()" data-i18n="deposit_back_btn">← Назад</button></div>';
+    
+	try {
+        var res = await fetch('/api/projects/my/investments', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        var el = document.getElementById('myInvList');
+        
+        if (r.success && r.data && r.data.length > 0) {
+            var totalInvested = 0;
+            var totalProfit = 0;
+            var html = '';
+            
+            r.data.forEach(function(inv) {
+                var invested = inv.investedAmount || 0;
+                var profit = inv.profitEarned || 0;
+                totalInvested += invested;
+                totalProfit += profit;
+                var roi = invested > 0 ? ((profit / invested) * 100).toFixed(1) : 0;
+                
+                html += '<div style="background:#111;padding:15px;border-radius:8px;margin-bottom:10px;border:1px solid #2a2a2a;">' +
+                    '<h4 style="color:#fff;margin-bottom:8px;">' + inv.title + '</h4>' +
+                    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' +
+                    '<div><p style="color:#888;font-size:0.75rem;" data-i18n="invested">💰 Вложено</p><p style="color:#f0d060;font-weight:600;">' + invested + ' ALTYN</p></div>' +
+                    '<div><p style="color:#888;font-size:0.75rem;" data-i18n="profit">📈 Прибыль</p><p style="color:' + (profit >= 0 ? '#4caf50' : '#f44336') + ';font-weight:600;">' + (profit >= 0 ? '+' : '') + profit + ' ALTYN</p></div>' +
+                    '<div><p style="color:#888;font-size:0.75rem;" data-i18n="roi">📊 ROI</p><p style="color:#2196f3;font-weight:600;">' + roi + '%</p></div>' +
+                    '<div><p style="color:#888;font-size:0.75rem;" data-i18n="status">📅 Статус</p><p style="color:#ff9800;">' + (inv.status||'active') + '</p></div>' +
+                    '<div><p style="color:#888;font-size:0.75rem;" data-i18n="phase">🔄 Фаза</p><p style="color:#2196f3;">' + getPhaseName(inv.phase||1) + '</p></div>' +
+                    '</div>' +
+                    '</div>';
+            });
+            
+            html += '<div style="background:linear-gradient(135deg,#d4af37,#f0d060);padding:15px;border-radius:8px;margin-top:10px;text-align:center;">' +
+                '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
+                '<div><p style="color:#000;font-size:0.8rem;" data-i18n="total_invested">💰 Всего вложено</p><p style="color:#000;font-size:1.2rem;font-weight:700;">' + totalInvested + ' ALTYN</p></div>' +
+                '<div><p style="color:#000;font-size:0.8rem;" data-i18n="total_profit">📈 Общая прибыль</p><p style="color:#000;font-size:1.2rem;font-weight:700;">' + (totalProfit >= 0 ? '+' : '') + totalProfit + ' ALTYN</p></div>' +
+                '</div>' +
+                '</div>';
+            
+            el.innerHTML = html;
+        } else {
+            el.innerHTML = '<p style="text-align:center;color:#888;padding:20px;" data-i18n="no_investments">📭 У вас пока нет инвестиций</p>';
+        }
+    } catch (e) {
+        document.getElementById('myInvList').innerHTML = '<p style="color:#f44;">' + (t('load_error') || 'Ошибка загрузки') + '</p>';
+    }
+}
+
+function getPhaseName(phase) {
+    if (phase === 1) return t('phase_collecting') || '🌟 Сбор средств';
+    if (phase === 2) return t('phase_implementing') || '🚀 Реализация';
+    if (phase === 3) return t('phase_launched') || '✅ Запущен';
+    return '—';
+}
+
+async function showTx() {
+    if (!api.user) { showNotif(t('login_required') || 'Войдите', 'error'); return; }
+    
+    document.getElementById('authForms').innerHTML = 
+        '<div class="auth-card" style="max-width:550px;">' +
+        '<h3 style="text-align:center;" data-i18n="transactions_title">📜 История транзакций</h3>' +
+        '<button class="btn btn-outline-gold btn-sm" style="margin-bottom:10px;" onclick="exportCSV()">📥 ' + (t('download_csv') || 'Скачать CSV') + '</button>' +
+		'<div id="txList" style="max-height:400px;overflow-y:auto;padding-right:5px;">' +
+        '<p style="color:#888;text-align:center;" data-i18n="loading">Загрузка...</p>' +
+        '</div>' +
+        '<button class="btn btn-outline-gold btn-block" style="margin-top:15px;" onclick="goBack()" data-i18n="deposit_back_btn">← Назад</button>' +
+        '</div>';
+    
+    try {
+        var res = await api.getTransactions();
+        var el = document.getElementById('txList');
+        
+        if (res.success && res.data && res.data.length > 0) {
+            var html = '';
+            res.data.forEach(function(tx) {
+                var color = tx.amount > 0 ? '#4caf50' : '#f44336';
+                var sign = tx.amount > 0 ? '+' : '';
+                var date = new Date(tx.createdAt).toLocaleString('ru-RU');
+                
+                html += '<div style="background:#111;padding:10px;border-radius:8px;margin-bottom:8px;">' +
+                    '<div style="display:flex;justify-content:space-between;">' +
+                    '<span style="color:#fff;">' + (tx.description||tx.type) + '</span>' +
+                    '<span style="color:' + color + ';font-weight:600;">' + sign + Number(tx.amount).toFixed(3) + ' ' + (tx.currency||'ALTYN') + '</span>' +
+                    '</div>' +
+                    '<p style="color:#888;font-size:0.7rem;">' + date + ' | ' + (tx.status||'completed') + '</p>' +
+                    '</div>';
+            });
+            el.innerHTML = html;
+        } else {
+            el.innerHTML = '<p style="text-align:center;color:#888;padding:20px;" data-i18n="no_transactions">📭 Нет транзакций</p>';
+        }
+    } catch (e) {
+        document.getElementById('txList').innerHTML = '<p style="color:#f44;">' + (t('load_error') || 'Ошибка загрузки') + '</p>';
+    }
+}
+
+function showProfile() {
+    var u = api.user || {};
+    document.getElementById('authForms').innerHTML = 
+        '<div class="auth-card">' +
+        '<h3 style="text-align:center;" data-i18n="profile_title">👤 Профиль</h3>' +
+        '<div id="profileView">' +
+        '<div style="background:#111;padding:15px;border-radius:8px;margin-bottom:15px;">' +
+        '<p style="color:#888;"><span data-i18n="profile_name">Имя:</span> <strong style="color:#fff;">' + (u.fullName||'—') + '</strong></p>' +
+        '<p style="color:#888;"><span data-i18n="profile_email">Email:</span> <strong style="color:#fff;">' + (u.email||'—') + '</strong></p>' +
+        '<p style="color:#888;"><span data-i18n="profile_phone">Телефон:</span> <strong style="color:#fff;">' + (u.phone||'—') + '</strong></p>' +
+        '<p style="color:#888;"><span data-i18n="profile_country">Страна:</span> <strong style="color:#fff;">' + (u.country||'—') + '</strong></p>' +
+        '<p style="color:#888;"><span data-i18n="profile_gender">Пол:</span> <strong style="color:#fff;">' + (u.gender||'—') + '</strong></p>' +
+        '<p style="color:#888;"><span data-i18n="profile_dob">Дата рождения:</span> <strong style="color:#fff;">' + (u.dateOfBirth||'—') + '</strong></p>' +
+        '<p style="color:#888;"><span data-i18n="profile_id">ID:</span> <strong style="color:#d4af37;">' + (u.userId||'—') + '</strong></p>' +
+        '</div>' +
+        '<button class="btn btn-outline-gold btn-block" onclick="showProfileEdit()" data-i18n="profile_edit_btn">✏️ Редактировать</button>' +
+        '</div>' +
+        '<div id="profileEdit" style="display:none;"></div>' +
+        '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()" data-i18n="profile_back_btn">← Назад</button>' +
+        '</div>';
+}
+
+function showProfileEdit() {
+    var u = api.user || {};
+    document.getElementById('profileView').style.display = 'none';
+    document.getElementById('profileEdit').style.display = 'block';
+    document.getElementById('profileEdit').innerHTML = 
+        '<div class="form-group"><label data-i18n="profile_name">Имя</label><input type="text" id="editFullName" value="' + (u.fullName||'') + '"></div>' +
+        '<div class="form-group"><label data-i18n="profile_email">Email</label><input type="email" id="editEmail" value="' + (u.email||'') + '"></div>' +
+        '<div class="form-group"><label data-i18n="profile_phone">Телефон</label><input type="tel" id="editPhone" value="' + (u.phone||'') + '"></div>' +
+        '<div class="form-group"><label data-i18n="profile_country">Страна</label><input type="text" id="editCountry" value="' + (u.country||'') + '"></div>' +
+        '<div class="form-group"><label data-i18n="profile_gender">Пол</label><select id="editGender"><option value="" ' + (!u.gender?'selected':'') + '>—</option><option value="' + (t('gender_male')||'Мужской') + '" ' + (u.gender==='Мужской'?'selected':'') + '>' + (t('gender_male')||'Мужской') + '</option><option value="' + (t('gender_female')||'Женский') + '" ' + (u.gender==='Женский'?'selected':'') + '>' + (t('gender_female')||'Женский') + '</option></select></div>' +
+        '<div class="form-group"><label data-i18n="profile_dob">Дата рождения</label><input type="date" id="editDOB" value="' + (u.dateOfBirth||'') + '"></div>' +
+        '<button class="btn btn-gold btn-block" onclick="saveProfile()" data-i18n="profile_save_btn">💾 Сохранить</button>';
+}
+
+async function saveProfile() {
+    var data = {
+        fullName: document.getElementById('editFullName')?.value,
+        email: document.getElementById('editEmail')?.value,
+        phone: document.getElementById('editPhone')?.value,
+        country: document.getElementById('editCountry')?.value,
+        gender: document.getElementById('editGender')?.value,
+        dateOfBirth: document.getElementById('editDOB')?.value
+    };
+    try {
+        var r = await api.updateProfile(data);
+        if (r.success) {
+            showNotif(t('profile_updated') || '✅ Профиль обновлён!', 'success');
+            api.user = r.data;
+            api.save();
+            showProfile();
+        }
+    } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+function showVerif() {
+    var f = document.getElementById('authForms');
+    f.innerHTML = '<div class="auth-card" style="text-align:center;"><h3 data-i18n="kyc_title">✅ Верификация</h3><p style="color:#888;" data-i18n="loading">Загрузка...</p></div>';
+    api.getKYCStatus().then(function(r) {
+        if (r.success && r.data) {
+            var d = r.data;
+            if (d.status === 'approved') {
+                f.innerHTML = '<div class="auth-card" style="text-align:center;"><div style="font-size:4rem;">✅</div><h3 style="color:#4caf50;" data-i18n="kyc_approved">Верификация пройдена</h3><div style="background:#111;padding:15px;border-radius:8px;margin:15px 0;text-align:left;"><p style="color:#888;"><span data-i18n="kyc_firstname">Имя:</span> <strong style="color:#fff;">' + d.firstName + ' ' + d.lastName + '</strong></p><p style="color:#888;"><span data-i18n="kyc_doc_type">Документ:</span> <strong style="color:#fff;">' + d.documentType + '</strong></p><p style="color:#888;"><span data-i18n="kyc_doc_number">Номер:</span> <strong style="color:#fff;">' + d.documentNumber + '</strong></p></div><button class="btn btn-outline-gold btn-block" onclick="goBack()" data-i18n="profile_back_btn">← Назад</button></div>';
+            } else if (d.status === 'pending') {
+                f.innerHTML = '<div class="auth-card" style="text-align:center;"><div style="font-size:4rem;">⏳</div><h3 style="color:#ff9800;" data-i18n="kyc_pending">Заявка на рассмотрении</h3><p style="color:#888;" data-i18n="kyc_pending_text">Ожидайте проверки администратором</p><button class="btn btn-outline-gold btn-block" onclick="goBack()" data-i18n="profile_back_btn">← Назад</button></div>';
+            } else if (d.status === 'rejected') {
+                f.innerHTML = '<div class="auth-card" style="text-align:center;"><div style="font-size:4rem;">❌</div><h3 style="color:#f44336;" data-i18n="kyc_rejected">Верификация отклонена</h3><p style="color:#ff9800;">' + (d.rejectionReason||'') + '</p><button class="btn btn-gold btn-block" onclick="showKYCForm()" data-i18n="kyc_resubmit">📤 Подать заново</button><button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()" data-i18n="profile_back_btn">← Назад</button></div>';
+            } else { showKYCForm(); }
+        } else { showKYCForm(); }
+    }).catch(function() { showKYCForm(); });
+}
+
+function showKYCForm() {
+    document.getElementById('authForms').innerHTML = '<div class="auth-card" style="max-width:500px;"><h3 style="text-align:center;" data-i18n="kyc_title">📄 Верификация личности</h3><p style="text-align:center;color:#888;font-size:0.85rem;margin-bottom:15px;" data-i18n="kyc_hint">Заполните все поля</p><div class="form-group"><label data-i18n="kyc_firstname">Имя *</label><input type="text" id="kycFN" placeholder="' + (t('kyc_firstname_placeholder')||'Иван') + '"></div><div class="form-group"><label data-i18n="kyc_lastname">Фамилия *</label><input type="text" id="kycLN" placeholder="' + (t('kyc_lastname_placeholder')||'Иванов') + '"></div><div class="form-group"><label data-i18n="kyc_doc_type">Тип документа *</label><select id="kycDT"><option value="">' + (t('kyc_select')||'Выберите...') + '</option><option value="passport">' + (t('kyc_passport')||'Паспорт') + '</option><option value="id_card">' + (t('kyc_id_card')||'Удостоверение личности') + '</option><option value="driver_license">' + (t('kyc_driver_license')||'Водительское удостоверение') + '</option></select></div><div class="form-group"><label data-i18n="kyc_doc_number">Номер документа *</label><input type="text" id="kycDN" placeholder="AB1234567"></div><div class="form-group"><label data-i18n="kyc_country">Страна</label><input type="text" id="kycCT" placeholder="' + (t('kyc_country_placeholder')||'Россия') + '"></div><div class="form-group"><label data-i18n="kyc_front">Фото документа (лицевая сторона)</label><input type="file" id="kycDF" accept="image/*,.pdf"></div><div class="form-group"><label data-i18n="kyc_back">Фото документа (обратная сторона)</label><input type="file" id="kycDB" accept="image/*,.pdf"></div><div class="form-group"><label data-i18n="kyc_selfie">Селфи с документом</label><input type="file" id="kycSL" accept="image/*"></div><button class="btn btn-gold btn-block" onclick="submitKYC()" id="kycBtn" data-i18n="kyc_submit">📤 Отправить на проверку</button><button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()" data-i18n="profile_back_btn">← Назад</button></div>';
+}
+
+async function submitKYC() {
+    var fn = document.getElementById('kycFN')?.value?.trim();
+    var ln = document.getElementById('kycLN')?.value?.trim();
+    var dt = document.getElementById('kycDT')?.value;
+    var dn = document.getElementById('kycDN')?.value?.trim();
+    var ct = document.getElementById('kycCT')?.value?.trim();
+    var btn = document.getElementById('kycBtn');
+    if (!fn || !ln || !dt || !dn) { showNotif(t('kyc_required_fields') || '❌ Заполните обязательные поля', 'error'); return; }
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loading-spinner"></span> ' + (t('sending') || 'Отправка...'); }
+    var fd = new FormData();
+    fd.append('firstName', fn); fd.append('lastName', ln); fd.append('documentType', dt); fd.append('documentNumber', dn);
+    if (ct) fd.append('country', ct);
+    var df = document.getElementById('kycDF')?.files?.[0];
+    var db = document.getElementById('kycDB')?.files?.[0];
+    var sl = document.getElementById('kycSL')?.files?.[0];
+    if (df) fd.append('documentFront', df);
+    if (db) fd.append('documentBack', db);
+    if (sl) fd.append('selfieWithDocument', sl);
+    try { var r = await api.submitKYC(fd); if (r.success) { showNotif('✅ ' + r.message, 'success'); setTimeout(function() { showVerif(); }, 1000); } } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+    finally { if (btn) { btn.disabled = false; btn.innerHTML = (t('kyc_submit') || '📤 Отправить на проверку'); } }
+}
+
+function showHeir() {
+    document.getElementById('authForms').innerHTML = '<div class="auth-card"><h3 data-i18n="heir_title">👨‍👩‍👧 Наследник</h3><input type="text" id="hn" placeholder="' + (t('heir_name') || 'ФИО наследника') + '"><input type="email" id="he" placeholder="' + (t('heir_email') || 'Email') + '"><input type="text" id="hp" placeholder="' + (t('heir_phone') || 'Телефон') + '"><input type="text" id="hr" placeholder="' + (t('heir_relation') || 'Родственная связь') + '"><button class="btn btn-gold btn-block" onclick="saveHeir()" data-i18n="heir_save">💾 Сохранить</button><button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()" data-i18n="profile_back_btn">← Назад</button></div>';
+}
+
+function showSupport() {
+    document.getElementById('authForms').innerHTML = 
+        '<div class="auth-card" style="max-width:1000px;padding:30px;">' +
+        '<h3 style="text-align:center;color:#d4af37;font-size:1.4rem;" data-i18n="support_title">💬 Поддержка</h3>' +
+        '<div class="form-group"><label style="color:#b0b0b0;font-size:0.9rem;" data-i18n="ticket_subject">Тема обращения</label><input type="text" id="ticketSubject" placeholder="' + (t('ticket_subject_placeholder') || 'Опишите проблему кратко') + '" style="padding:14px;font-size:1rem;"></div>' +
+        '<div class="form-group"><label style="color:#b0b0b0;font-size:0.9rem;" data-i18n="ticket_message">Сообщение</label><textarea id="ticketMessage" rows="8" placeholder="' + (t('ticket_message_placeholder') || 'Опишите ваш вопрос подробно...') + '" style="resize:vertical;min-height:200px;padding:14px;font-size:1rem;line-height:1.6;"></textarea></div>' +
+        '<button class="btn btn-gold btn-block btn-lg" onclick="createTicket()" data-i18n="ticket_send_btn">📤 Отправить</button>' +
+        '<div id="ticketResult" style="margin-top:15px;"></div>' +
+        '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()" data-i18n="profile_back_btn">← Назад</button>' +
+        '</div>';
+}
+
+async function createTicket() {
+    var subject = document.getElementById('ticketSubject')?.value?.trim();
+    var message = document.getElementById('ticketMessage')?.value?.trim();
+    if (!subject || !message) { showNotif(t('ticket_required') || 'Заполните тему и сообщение', 'error'); return; }
+    try {
+        var res = await fetch('/api/support', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ subject: subject, message: message })
+        });
+        var r = await res.json();
+        if (r.success) { showNotif(t('ticket_created') || '✅ Тикет создан!', 'success'); goBack(); }
+    } catch (e) { showNotif(t('error') || 'Ошибка', 'error'); }
+}
+
+async function saveHeir() {
+    var d = { heir: { fullName: document.getElementById('hn')?.value||'', email: document.getElementById('he')?.value||'', phone: document.getElementById('hp')?.value||'', relationship: document.getElementById('hr')?.value||'' } };
+    try { var r = await api.updateProfile(d); if (r.success) { showNotif(t('saved') || 'Сохранено!', 'success'); goBack(); } } catch (e) { showNotif(e.message, 'error'); }
+}
+
+function showMyProjects() {
+    if (!api.user || !api.user.isActivated) { showNotif(t('activate_required') || '🔒 Активируйте аккаунт', 'error'); return; }
+    
+    document.getElementById('authForms').innerHTML = `
+        <div class="auth-card" style="max-width:500px;">
+            <h3 style="text-align:center;" data-i18n="my_projects_title">📁 Мои бизнес-проекты</h3>
+            <button class="btn btn-gold btn-block" onclick="showCreateProject()" style="margin-bottom:15px;" data-i18n="my_projects_create_btn">➕ Создать новый проект</button>
+            <div id="myProjectsList" style="max-height:400px;overflow-y:auto;">
+                <p style="text-align:center;color:#888;" data-i18n="loading">Загрузка...</p>
+            </div>
+            <button class="btn btn-outline-gold btn-block" onclick="goBack()" data-i18n="profile_back_btn">← Назад</button>
+        </div>`;
+    
+fetch('/api/projects/my/created', { headers: { 'Authorization': 'Bearer ' + api.token } })
+    .then(function(res) { return res.json(); })
+    .then(function(r) {
+        var el = document.getElementById('myProjectsList');
+        if (r.success && r.data && r.data.length > 0) {
+            el.innerHTML = r.data.map(function(p) {
+                var statusColor = p.status === 'active' ? '#4caf50' : p.status === 'pending' ? '#ff9800' : '#888';
+                return '<div style="background:#111;padding:15px;border-radius:8px;margin-bottom:10px;">' +
+                    '<h4 style="color:#fff;">' + p.title + '</h4>' +
+                    '<p style="color:#888;font-size:0.8rem;">' + (p.shortDescription||p.description||'').substring(0, 100) + '...</p>' +
+                    '<div style="display:flex;justify-content:space-between;margin-top:10px;">' +
+                    '<span style="color:' + statusColor + ';font-size:0.8rem;">' + (t('status') || 'Статус:') + ' ' + p.status + '</span>' +
+                    '<span style="color:#888;font-size:0.8rem;">ROI: ' + p.expectedROI + '%</span>' +
+                    '</div>' +
+                    '<div style="margin-top:5px;background:#2a2a2a;border-radius:10px;height:8px;">' +
+                    '<div style="background:#d4af37;height:8px;border-radius:10px;width:' + (p.fundingProgress||0) + '%;"></div>' +
+                    '</div>' +
+                    '<p style="color:#888;font-size:0.75rem;margin-top:3px;">' + (t('collected_amount') || 'Собрано:') + ' ' + p.collectedAmount + ' ' + (t('from') || 'из') + ' ' + p.targetAmount + ' ALTYN</p>' +
+					'</div>';
+            }).join('');
+        } else {
+            el.innerHTML = '<p style="text-align:center;color:#888;" data-i18n="my_projects_empty">У вас пока нет проектов. Создайте первый!</p>';
+        }
+    })
+    .catch(function() {
+        document.getElementById('myProjectsList').innerHTML = '<p style="color:#f44;">' + (t('load_error') || 'Ошибка загрузки') + '</p>';
+    });
+}
+
+async function showProjectInvestors(id) {
+    var c = document.getElementById('admin-projects');
+    c.innerHTML = '<p style="color:#888;">' + (t('loading') || 'Загрузка...') + '</p>';
+    try {
+        var res = await fetch('/api/admin/projects/' + id + '/investors', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        if (r.success && r.data && r.data.length > 0) {
+            var html = '<h4 style="color:#d4af37;margin-bottom:10px;" data-i18n="project_investors">👥 Инвесторы проекта</h4><div style="max-height:300px;overflow-y:auto;">';
+            var totalAmount = 0;
+            r.data.forEach(function(inv) {
+                totalAmount += inv.amount || 0;
+                html += '<div style="background:#0a0a0a;padding:10px;border-radius:6px;margin-bottom:5px;">' +
+                    '<p style="color:#fff;">' + (inv.userId?.fullName||'—') + '</p>' +
+                    '<p style="color:#888;font-size:0.8rem;">ID: ' + (inv.userId?.userId||'—') + ' | ' + (t('amount') || 'Сумма:') + ' <strong style="color:#f0d060;">' + (inv.amount||0) + ' ALTYN</strong></p>' +
+                    '</div>';
+            });
+            html += '<p style="color:#f0d060;margin-top:10px;">💰 ' + (t('total_invested_amount') || 'Всего инвестировано:') + ' <strong>' + totalAmount + ' ALTYN</strong></p>';
+            html += '</div>';
+            c.innerHTML = html;
+        } else {
+            c.innerHTML = '<p style="color:#888;" data-i18n="no_investors">Нет инвесторов</p>';
+        }
+    } catch (e) { c.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>'; }
+}
+
+function showCreateProject() {
+    document.getElementById('authForms').innerHTML = `
+        <div class="auth-card" style="max-width:500px;">
+            <h3 style="text-align:center;" data-i18n="create_project_title">➕ Создать бизнес-проект</h3>
+            <p style="text-align:center;color:#888;font-size:0.85rem;margin-bottom:15px;" data-i18n="create_project_hint">Опишите ваш проект для привлечения инвестиций</p>
+            
+            <div class="form-group">
+                <label data-i18n="create_project_name">Название проекта *</label>
+                <input type="text" id="projTitle" placeholder="${t('create_project_name_placeholder') || 'Например: Солнечная ферма'}">
+            </div>
+			
+            <div class="form-group">
+                <label data-i18n="create_project_location">Локация</label>
+                <input type="text" id="projLocation" placeholder="${t('create_project_location_placeholder') || 'Например: ОАЭ, Дубай'}">
+            </div>
+            
+            <div class="form-group">
+                <label data-i18n="create_project_category">Категория</label>
+                <input type="text" id="projCategory" placeholder="${t('create_project_category_placeholder') || 'Например: Производство, Услуги, Торговля'}">
+            </div>
+            
+            <div class="form-group">
+    <label data-i18n="create_project_desc">Описание проекта *</label>
+    <textarea id="projDesc" rows="20" placeholder="${t('create_project_desc_placeholder') || 'Подробно опишите ваш проект...'}" style="width:100%;padding:12px;background:#111;border:1px solid #2a2a2a;border-radius:8px;color:#fff;font-family:'Montserrat',sans-serif;resize:vertical;min-height:400px;"></textarea>
+</div>
+            
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div class="form-group">
+                    <label data-i18n="create_project_target">Целевая сумма (ALTYN) *</label>
+                    <input type="number" id="projTarget" placeholder="50000" min="100">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="create_project_roi">Ожидаемый ROI (%) *</label>
+                    <input type="number" id="projROI" placeholder="25" min="1" max="1000">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label data-i18n="create_project_min">Мин. инвестиция (ALTYN)</label>
+                <input type="number" id="projMin" placeholder="10" min="1">
+            </div>
+            
+            <div class="form-group">
+                <label data-i18n="create_project_risk">Уровень риска</label>
+                <select id="projRisk">
+                    <option value="low">${t('risk_low') || 'Низкий'}</option>
+                    <option value="medium" selected>${t('risk_medium') || 'Средний'}</option>
+                    <option value="high">${t('risk_high') || 'Высокий'}</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label data-i18n="create_project_images">Загрузить изображения (JPEG, PNG, GIF до 5 шт)</label>
+                <input type="file" id="projImages" accept="image/*" multiple style="padding:8px;">
+            </div>
+
+            <div class="form-group">
+                <label data-i18n="create_project_video">Видео-презентация проекта (ссылка YouTube)</label>
+                <input type="text" id="projVideo" placeholder="https://youtube.com/watch?v=...">
+            </div>
+            
+            <button class="btn btn-gold btn-block" onclick="submitProject()" id="projBtn" data-i18n="create_project_submit">📤 Отправить на модерацию</button>
+            <button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="showMyProjects()" data-i18n="profile_back_btn">← Назад</button>
+        </div>`;
+}
+async function submitProject() {
+    var title = document.getElementById('projTitle')?.value?.trim();
+    var location = document.getElementById('projLocation')?.value?.trim();
+    var desc = document.getElementById('projDesc')?.value?.trim();
+    var category = document.getElementById('projCategory')?.value?.trim();
+    var target = parseFloat(document.getElementById('projTarget')?.value);
+    var roi = parseFloat(document.getElementById('projROI')?.value);
+    var minInv = parseFloat(document.getElementById('projMin')?.value) || 10;
+    var risk = document.getElementById('projRisk')?.value;
+    var video = document.getElementById('projVideo')?.value?.trim();
+    var btn = document.getElementById('projBtn');
+    
+    if (!title || !desc || !target || !roi) { showNotif(t('fill_required') || '❌ Заполните обязательные поля', 'error'); return; }
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loading-spinner"></span> ' + (t('sending') || 'Отправка...'); }
+    
+    var fd = new FormData();
+    fd.append('title', title);
+    fd.append('location', location);
+    fd.append('description', desc);
+    fd.append('category', category || 'other');
+    fd.append('targetAmount', target);
+    fd.append('expectedROI', roi);
+    fd.append('minInvestment', minInv);
+    fd.append('riskLevel', risk);
+    if (video) fd.append('videoUrl', video);
+    
+    var files = document.getElementById('projImages')?.files;
+    if (files) { for (var i = 0; i < files.length; i++) { fd.append('images', files[i]); } }
+    
+    try {
+        var res = await fetch('/api/projects/create', { method: 'POST', headers: { 'Authorization': 'Bearer ' + api.token }, body: fd });
+        var r = await res.json();
+        if (r.success) { showNotif('✅ ' + r.message, 'success'); showMyProjects(); }
+        else { showNotif('❌ ' + (r.message || t('error') || 'Ошибка'), 'error'); }
+    } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+    finally { if (btn) { btn.disabled = false; btn.innerHTML = (t('create_project_submit') || '📤 Отправить на модерацию'); } }
+}
+
+function showCrypto() {
+    if (!api.user || !api.user.isActivated) { showNotif(t('activate_required') || '🔒 Активируйте аккаунт', 'error'); return; }
+    
+    document.getElementById('authForms').innerHTML = `
+        <div class="auth-card" style="max-width:550px;">
+            <h3 style="text-align:center;" data-i18n="crypto_title">🪙 Крипто-кошелёк USDT (TRC-20)</h3>
+            <div id="cryptoContent">
+                <p style="text-align:center;color:#888;" data-i18n="loading">Загрузка...</p>
+            </div>
+            <button class="btn btn-outline-gold btn-block" style="margin-top:15px;" onclick="goBack()" data-i18n="profile_back_btn">← Назад</button>
+        </div>`;
+    
+    loadCryptoWallet();
+}
+
+async function loadCryptoWallet() {
+    var c = document.getElementById('cryptoContent');
+    if (!c) return;
+    
+    try {
+        var res = await fetch('/api/crypto/deposit-info', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var d = await res.json();
+        
+        if (!d.success) { c.innerHTML = '<p style="color:#f44;">' + (t('load_error') || 'Ошибка загрузки') + '</p>'; return; }
+        
+        var info = d.data;
+        var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(info.address);
+        
+        c.innerHTML = `
+            <div style="background:#111;padding:20px;border-radius:12px;text-align:center;margin-bottom:15px;">
+                <p style="color:#fff;margin-bottom:10px;">📥 <strong data-i18n="crypto_deposit_title">Пополнение USDT (TRC-20)</strong></p>
+                
+                <div style="background:#000;padding:15px;border-radius:8px;margin-bottom:15px;">
+                    <p style="color:#888;font-size:0.75rem;margin-bottom:5px;" data-i18n="crypto_address_label">Адрес кошелька:</p>
+                    <p style="color:#d4af37;font-size:0.85rem;word-break:break-all;">${info.address}</p>
+                </div>
+                
+                <img src="${qrUrl}" style="width:180px;height:180px;margin:10px 0;border:2px solid #d4af37;border-radius:8px;" alt="QR">
+                
+                <div style="background:#ff9800;padding:12px;border-radius:8px;margin:10px 0;">
+                    <p style="color:#000;font-weight:700;">⚠️ <span data-i18n="crypto_memo_label">MEMO:</span> ${info.memo}</p>
+                    <p style="color:#000;font-size:0.8rem;" data-i18n="crypto_memo_hint">Без MEMO платёж НЕ зачислится!</p>
+                </div>
+                
+                <p style="color:#888;font-size:0.8rem;"><span data-i18n="crypto_network">Сеть:</span> ${info.network}</p>
+                <p style="color:#888;font-size:0.8rem;"><span data-i18n="crypto_min_amount">Мин. сумма:</span> ${info.minAmount}</p>
+            </div>
+            
+            <div style="background:#111;padding:20px;border-radius:12px;text-align:center;">
+                <p style="color:#fff;margin-bottom:10px;">🔍 <strong data-i18n="crypto_check_title">Проверка платежа</strong></p>
+                <input type="text" id="cryptoTxId" placeholder="${t('crypto_txid_placeholder') || 'Введите TX ID транзакции'}" style="margin-bottom:10px;">
+                <button class="btn btn-gold btn-block" onclick="checkCryptoPayment()" data-i18n="crypto_check_btn">🔍 Проверить платёж</button>
+                <p style="color:#888;font-size:0.75rem;margin-top:5px;" data-i18n="crypto_check_hint">После проверки средства зачислятся автоматически</p>
+            </div>
+            
+            <div style="background:#111;padding:20px;border-radius:12px;margin-top:15px;">
+                <p style="color:#fff;margin-bottom:10px;text-align:center;">📜 <strong data-i18n="crypto_history_title">История пополнений</strong></p>
+                <div id="cryptoHistory" style="max-height:200px;overflow-y:auto;">
+                    <p style="color:#888;text-align:center;" data-i18n="loading">Загрузка...</p>
+                </div>
+            </div>`;
+        
+        loadCryptoHistory();
+        
+    } catch (e) {
+        c.innerHTML = '<p style="color:#f44;">' + (t('connection_error') || 'Ошибка соединения') + '</p>';
+    }
+}
+
+async function checkCryptoPayment() {
+    var txId = document.getElementById('cryptoTxId')?.value?.trim();
+    if (!txId) { showNotif(t('enter_txid') || 'Введите TX ID', 'error'); return; }
+    
+    showNotif(t('checking_blockchain') || '⏳ Проверяем в блокчейне...', 'info');
+    
+    try {
+        var res = await fetch('/api/crypto/verify-tx', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ txId: txId })
+        });
+        var r = await res.json();
+        
+        if (r.success && r.confirmed) {
+            var dep = await api.deposit(100);
+            if (dep.success) {
+                showNotif(t('payment_confirmed') || '✅ Платёж подтверждён! ' + dep.message, 'success');
+                var p = await api.getProfile();
+                if (p.success) { api.user = p.data; api.save(); }
+                loadCryptoWallet();
+            }
+        } else {
+            showNotif(t('tx_not_found') || '❌ Транзакция не найдена. Проверьте TX ID.', 'error');
+        }
+    } catch (e) {
+        showNotif('❌ ' + e.message, 'error');
+    }
+}
+
+async function loadCryptoHistory() {
+    var el = document.getElementById('cryptoHistory');
+    if (!el) return;
+    
+    try {
+        var res = await api.getTransactions();
+        if (res.success && res.data) {
+            var cryptoHistory = res.data.filter(function(tx) {
+                return tx.type === 'deposit' && tx.currency === 'USDT';
+            });
+            
+            if (cryptoHistory.length > 0) {
+                el.innerHTML = cryptoHistory.map(function(tx) {
+                    var date = new Date(tx.createdAt).toLocaleString('ru-RU');
+                    return '<div style="background:#0a0a0a;padding:8px;border-radius:6px;margin-bottom:5px;">' +
+                        '<p style="color:#fff;font-size:0.8rem;">' + tx.description + '</p>' +
+                        '<p style="color:#888;font-size:0.7rem;">' + date + ' | +' + (tx.amountALTYN||tx.amount) + ' ALTYN</p>' +
+                        '</div>';
+                }).join('');
+            } else {
+                el.innerHTML = '<p style="text-align:center;color:#888;" data-i18n="crypto_no_history">Нет пополнений</p>';
+            }
+        }
+    } catch (e) {
+        el.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>';
+    }
+}
+
+function showCryptoWithdraw() {
+    var c = document.getElementById('cryptoContent');
+    if (!c) return;
+    c.innerHTML = `
+        <div style="background:#111;padding:15px;border-radius:8px;">
+            <p style="color:#fff;margin-bottom:10px;" data-i18n="crypto_withdraw_title">📤 Вывод криптовалюты</p>
+            <select id="cryptoCurrency" style="margin-bottom:10px;">
+                <option value="USDT_TRC20">USDT (TRC-20)</option>
+                <option value="BTC">Bitcoin</option>
+                <option value="ETH">Ethereum</option>
+            </select>
+            <input type="text" id="cryptoAddress" placeholder="${t('crypto_withdraw_address') || 'Адрес кошелька получателя'}">
+            <input type="number" id="cryptoAmount" placeholder="${t('crypto_withdraw_amount') || 'Сумма в USD'}" min="10">
+            <p style="color:#888;font-size:0.75rem;" data-i18n="crypto_withdraw_fee">Комиссия сети будет удержана автоматически</p>
+            <button class="btn btn-gold btn-block" style="margin-top:10px;" onclick="processCryptoWithdraw()" data-i18n="crypto_withdraw_btn">📤 Отправить</button>
+        </div>`;
+}
+
+async function confirmCryptoDeposit(currency) {
+    var txId = prompt(t('enter_txid') || 'Введите TX ID / хеш транзакции:');
+    if (!txId) return;
+    
+    showNotif(t('checking') || '⏳ Проверяем транзакцию...', 'info');
+    
+    setTimeout(async function() {
+        var usdAmount = 100;
+        var rate = window.currentAltynRate || 0.1445;
+        var altynAmount = (usdAmount / rate).toFixed(2);
+        
+        try {
+            var res = await fetch('/api/finance/deposit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+                body: JSON.stringify({ amount: usdAmount })
+            });
+            var r = await res.json();
+            if (r.success) {
+                showNotif((t('credited_amount') || '✅ Зачислено') + ' ' + altynAmount + ' ALTYN!', 'success');
+                var p = await api.getProfile();
+                if (p.success) { api.user = p.data; api.save(); }
+                goBack();
+            }
+        } catch (e) {
+            showNotif('❌ ' + (t('error') || 'Ошибка') + ': ' + e.message, 'error');
+        }
+    }, 2000);
+}
+
+async function processCryptoWithdraw() {
+    var currency = document.getElementById('cryptoCurrency')?.value;
+    var address = document.getElementById('cryptoAddress')?.value?.trim();
+    var amount = parseFloat(document.getElementById('cryptoAmount')?.value);
+    
+    if (!address) { showNotif(t('enter_wallet') || '❌ Введите адрес кошелька', 'error'); return; }
+    if (!amount || amount < 10) { showNotif(t('min_crypto_withdraw') || '❌ Минимальная сумма: 10 USD', 'error'); return; }
+    
+    showNotif(t('processing_withdraw') || '⏳ Обработка вывода...', 'info');
+    
+    setTimeout(async function() {
+        try {
+            var res = await api.withdraw(amount, 'USD', address);
+            if (res.success) {
+                showNotif('✅ ' + res.message, 'success');
+                var p = await api.getProfile();
+                if (p.success) { api.user = p.data; api.save(); }
+                goBack();
+            }
+        } catch (e) {
+            showNotif('❌ ' + e.message, 'error');
+        }
+    }, 1500);
+}
+
+async function showAdmin() {
+   if (!api.isAdmin()) return showNotif(t('no_access') || 'Нет доступа', 'error');
+document.getElementById('authForms').innerHTML = '<div class="auth-card"><h3 style="text-align:center;color:#d4af37;" data-i18n="admin_title">👑 Админ-панель</h3><button class="btn btn-outline-gold btn-block admin-toggle" data-target="treasury" data-i18n="admin_treasury">💰 Казна</button><div id="admin-treasury" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block admin-toggle" data-target="withdrawals" data-i18n="admin_withdrawals">💰 Выводы</button><div id="admin-withdrawals" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block admin-toggle" data-target="kyc" data-i18n="admin_kyc">📄 Верификации</button><div id="admin-kyc" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block admin-toggle" data-target="projects" data-i18n="admin_projects">📁 Проекты</button><div id="admin-projects" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block admin-toggle" data-target="projectTreasury" data-i18n="admin_project_treasury">🏗️ Казна проектов</button><div id="admin-projectTreasury" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block admin-toggle" data-target="users" data-i18n="admin_users">👥 Пользователи</button><div id="admin-users" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block admin-toggle" data-target="stats" data-i18n="admin_stats">📊 Статистика</button><div id="admin-stats" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block admin-toggle" data-target="logs" data-i18n="admin_logs">📝 Логи</button><div id="admin-logs" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block admin-toggle" data-target="tickets" data-i18n="admin_tickets">🎫 Тикеты</button><div id="admin-tickets" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block" onclick="createBackup()" data-i18n="admin_backup">💾 Создать бэкап</button><button class="btn btn-outline-gold btn-block admin-toggle" data-target="apiKeys" data-i18n="admin_api_keys">🔑 API Ключи</button><div id="admin-apiKeys" class="admin-panel" style="display:none;"></div><button class="btn btn-outline-gold btn-block" style="margin-top:15px;" onclick="showDash()" data-i18n="admin_back">← Назад в кабинет</button></div>';
+    
+    document.querySelectorAll('.admin-toggle').forEach(function(btn) {
+        btn.onclick = function(e) {
+            e.stopPropagation();
+            var target = this.getAttribute('data-target');
+            var panel = document.getElementById('admin-' + target);
+            if (!panel) return;
+            
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                document.querySelectorAll('.admin-panel').forEach(function(p) { p.style.display = 'none'; });
+                panel.style.display = 'block';
+                if (target === 'treasury') showTreasury();
+                if (target === 'withdrawals') showAWithdrawals();
+                if (target === 'kyc') showAKYC();
+                if (target === 'projects') showAProjects();
+                if (target === 'projectTreasury') showProjectTreasury();
+                if (target === 'users') showAUsers();
+                if (target === 'stats') showAStats();
+                if (target === 'logs') showALogs();
+                if (target === 'tickets') showTickets();
+                if (target === 'apiKeys') showAPIKeys();
+            } else {
+                panel.style.display = 'none';
+            }
+        };
+    });
+    
+	setTimeout(function() { updatePageTexts(); }, 100);
+}
+
+async function showTickets() {
+    var c = document.getElementById('admin-tickets');
+    c.innerHTML = '<div class="loader">' + (t('loading_tickets') || 'Загрузка тикетов...') + '</div>';
+    try {
+        var res = await fetch('/api/support/admin/all', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        if (r.success && r.data && r.data.length) {
+            c.innerHTML = '<div class="partners-list">' + r.data.map(function(t) {
+                var statusColor = t.status === 'open' ? '#ff9800' : t.status === 'closed' ? '#888' : '#4caf50';
+                return '<div class="partner-row" style="cursor:pointer;" onclick="viewTicket(\'' + t._id + '\')">' +
+                    '<div><p style="color:#fff;">#' + t._id.toString().slice(-6) + ' — ' + t.subject + '</p>' +
+                    '<p style="color:#888;font-size:0.8rem;">' + (t.userId?.fullName||'') + ' | ' + new Date(t.createdAt).toLocaleString('ru-RU') + '</p></div>' +
+                    '<span class="badge" style="background:' + statusColor + '22;color:' + statusColor + ';">' + (t.status || 'open') + '</span>' +
+                    '</div>';
+            }).join('') + '</div>';
+        } else {
+            c.innerHTML = '<p style="text-align:center;color:#888;" data-i18n="no_tickets">Нет тикетов</p>';
+        }
+    } catch(e) { c.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>'; }
+}
+
+async function viewTicket(id) {
+    var c = document.getElementById('admin-tickets');
+    try {
+        var res = await fetch('/api/support/' + id, { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        if (r.success && r.data) {
+            var ticket = r.data;  // ← переименовали t → ticket
+            var html = '<h4 style="color:#d4af37;">' + ticket.subject + '</h4>' +
+                '<p style="color:#888;">👤 ' + (ticket.userId?.fullName||'') + ' | 📧 ' + (ticket.userId?.email||'') + '</p>' +
+                '<div class="partners-list" style="max-height:300px;overflow-y:auto;">';
+            
+            ticket.messages.forEach(function(m) {
+                var role = m.senderRole === 'admin' ? (t('support_role') || '👑 Поддержка') : (t('client_role') || '👤 Клиент');
+                html += '<div class="partner-row"><div><p style="color:#fff;">' + role + '</p><p style="color:#b0b0b0;">' + m.message + '</p><p style="color:#888;font-size:0.7rem;">' + new Date(m.createdAt).toLocaleString('ru-RU') + '</p></div></div>';
+            });
+            
+            html += '</div>' +
+                '<textarea id="ticketReply" rows="3" placeholder="' + (t('reply_placeholder') || 'Ваш ответ...') + '" style="margin-top:15px;resize:vertical;"></textarea>' +
+                '<button class="btn btn-gold btn-block" onclick="replyTicket(\'' + id + '\')" data-i18n="reply_btn">📤 Ответить</button>' +
+                (ticket.status !== 'closed' ? '<button class="btn btn-sm" style="background:#b71c1c;color:#fff;margin-top:5px;" onclick="closeTicket(\'' + id + '\')" data-i18n="close_ticket_btn">🔒 Закрыть</button>' : '') +
+                '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="showTickets()" data-i18n="back_to_list">← К списку</button>';
+            
+            c.innerHTML = html;
+        }
+    } catch(e) { c.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>'; }
+}
+
+async function replyTicket(id) {
+    var msg = document.getElementById('ticketReply')?.value?.trim();
+    if (!msg) { showNotif(t('enter_reply') || 'Введите ответ', 'error'); return; }
+    try {
+        var res = await fetch('/api/support/' + id + '/reply', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ message: msg })
+        });
+        var r = await res.json();
+        if (r.success) { showNotif(t('reply_sent') || '✅ Ответ отправлен', 'success'); viewTicket(id); }
+    } catch(e) { showNotif(t('error') || 'Ошибка', 'error'); }
+}
+
+async function closeTicket(id) {
+    if (!confirm(t('close_ticket_confirm') || 'Закрыть тикет?')) return;
+    try {
+        var res = await fetch('/api/support/' + id + '/close', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token }
+        });
+        var r = await res.json();
+        if (r.success) { showNotif(t('ticket_closed') || 'Тикет закрыт', 'info'); viewTicket(id); }
+    } catch(e) { showNotif(t('error') || 'Ошибка', 'error'); }
+}
+
+async function showALogs() {
+    var c = document.getElementById('admin-logs');
+    c.innerHTML = (t('loading_logs') || 'Загрузка логов...');
+    try {
+        var res = await fetch('/api/admin/logs', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        if (r.success && r.data && r.data.length) {
+            c.innerHTML = '<div style="max-height:400px;overflow-y:auto;">' + r.data.map(function(log) {
+                var date = new Date(log.createdAt).toLocaleString('ru-RU');
+                return '<div style="background:#111;padding:10px;border-radius:8px;margin-bottom:8px;">' +
+                    '<p style="color:#fff;">' + (log.adminId?.fullName||(t('admin')||'Админ')) + ' — <span style="color:#d4af37;">' + log.action + '</span></p>' +
+                    '<p style="color:#888;font-size:0.8rem;">' + (log.details||'') + '</p>' +
+                    '<p style="color:#888;font-size:0.7rem;">' + date + '</p>' +
+                    '</div>';
+            }).join('') + '</div>';
+        } else {
+            c.innerHTML = '<p style="color:#888;" data-i18n="no_logs">Нет записей</p>';
+        }
+    } catch (e) { c.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>'; }
+}
+
+async function createBackup() {
+    showNotif(t('creating_backup') || '💾 Создаю бэкап...', 'info');
+    try {
+        var res = await fetch('/api/admin/backup', { method: 'POST', headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        if (r.success) { showNotif(t('backup_created') || '✅ Бэкап создан!', 'success'); }
+    } catch (e) { showNotif(t('backup_error') || '❌ Ошибка бэкапа', 'error'); }
+}
+
+function showAPIKeys() {
+    var c = document.getElementById('admin-apiKeys');
+    c.innerHTML = '<div class="auth-card"><h3 style="text-align:center;" data-i18n="api_keys_title">🔑 API Ключи</h3><div id="apiKeyList">' + (t('loading') || 'Загрузка...') + '</div><button class="btn btn-gold btn-block" style="margin-top:15px;" onclick="generateAPIKey()" data-i18n="api_keys_generate">➕ Создать новый ключ</button><div id="apiResult" style="margin-top:15px;"></div></div>';
+    loadAPIKeys();
+}
+
+async function loadAPIKeys() {
+    var el = document.getElementById('apiKeyList');
+    try {
+        var res = await fetch('/api/v1/keys', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        if (r.success && r.data && r.data.length) {
+            el.innerHTML = r.data.map(function(k) {
+                return '<div style="background:#111;padding:10px;border-radius:8px;margin-bottom:8px;">' +
+                    '<p style="color:#fff;">' + k.name + ' <span style="color:#d4af37;">' + k.key + '</span></p>' +
+                    '<p style="color:#888;font-size:0.8rem;">' + (k.permissions||[]).join(', ') + '</p>' +
+                    '<button class="btn btn-sm" onclick="deleteAPIKey(\'' + k._id + '\')" style="background:#b71c1c;color:#fff;border:none;border-radius:8px;" data-i18n="api_keys_delete">🗑️ Удалить</button>' +
+                    '</div>';
+            }).join('');
+        } else {
+            el.innerHTML = '<p style="color:#888;" data-i18n="api_keys_none">Нет ключей</p>';
+        }
+    } catch (e) { el.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>'; }
+}
+
+async function generateAPIKey() {
+    var name = prompt(t('api_key_name') || 'Название ключа:', 'My API Key');
+    if (!name) return;
+    try {
+        var res = await fetch('/api/v1/keys/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ name: name })
+        });
+        var r = await res.json();
+        if (r.success) {
+            document.getElementById('apiResult').innerHTML = 
+                '<div style="background:#1b5e20;padding:15px;border-radius:8px;margin-top:10px;">' +
+                '<p style="color:#4caf50;">' + (t('api_key_created') || '✅ Ключ создан!') + '</p>' +
+                '<p style="color:#fff;">' + (t('api_key') || 'Ключ:') + ' <strong style="color:#f0d060;">' + r.data.key + '</strong></p>' +
+                '<p style="color:#fff;">' + (t('api_secret') || 'Секрет:') + ' <strong style="color:#ff9800;">' + r.data.secret + '</strong></p>' +
+                '<p style="color:#888;" data-i18n="api_secret_warning">Сохраните секрет сейчас — он больше не покажется!</p>' +
+                '</div>';
+            loadAPIKeys();
+        }
+    } catch (e) { showNotif(t('error') || 'Ошибка', 'error'); }
+}
+
+async function deleteAPIKey(id) {
+    if (!confirm(t('api_key_delete_confirm') || 'Удалить ключ?')) return;
+    try {
+        await fetch('/api/v1/keys/' + id, { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + api.token } });
+        loadAPIKeys();
+    } catch (e) { showNotif(t('error') || 'Ошибка', 'error'); }
+}
+
+async function showAUsers() {
+    var c = document.getElementById('admin-users');
+    if (!c) return;
+    c.innerHTML = '<p style="color:#888;">' + (t('loading_users') || 'Загрузка пользователей...') + '</p>';
+    
+    try {
+        var res = await fetch('/api/admin/users', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        
+        if (r.success && r.data && r.data.length > 0) {
+            var html = '<div style="max-height:400px;overflow-y:auto;">';
+            r.data.forEach(function(u) {
+                html += '<div style="background:#111;padding:10px;border-radius:8px;margin-bottom:8px;display:flex;gap:10px;align-items:start;">' +
+                    (u.avatar ? '<img src="/' + u.avatar + '" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #d4af37;flex-shrink:0;">' : '<div style="width:48px;height:48px;border-radius:50%;background:#1a1a1a;border:2px solid #d4af37;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#d4af37;font-size:1.2rem;">👤</div>') +
+                    '<div>' +
+                    '<p style="color:#fff;font-weight:600;">' + (u.fullName||'—') + '</p>' +
+                    '<p style="color:#d4af37;font-size:0.8rem;">🆔 ' + (u.userId||'—') + '</p>' +
+                    '<p style="color:#888;font-size:0.8rem;">📧 ' + (u.email||'—') + '</p>' +
+                    '<p style="color:#888;font-size:0.8rem;">📱 ' + (u.phone||'—') + (u.country ? ' | 🌍 ' + u.country : '') + '</p>' +
+                    '<p style="color:#888;font-size:0.8rem;">' + (u.gender ? '⚧ ' + u.gender + ' | ' : '') + '🎂 ' + (u.dateOfBirth||'—') + '</p>' +
+                    '<p style="color:#888;font-size:0.8rem;">💰 ' + (u.balance||0) + ' ALTYN | Заработано: ' + (u.totalEarned||0) + ' ALTYN</p>' +
+                    '<p style="color:#888;font-size:0.8rem;">🔓 ' + (u.isActivated ? 'Активирован' : 'Не активирован') + ' | ⭐ ' + (u.partnerStatus||'none') + ' | 👑 ' + (u.role||'user') + '</p>' +
+                    '<p style="color:#888;font-size:0.8rem;">👥 Партнёров: ' + (u.directPartners||0) + ' прямых / ' + (u.totalPartners||0) + ' всего</p>' +
+                    '</div>' +
+                    '</div>';
+            });
+            html += '</div>';
+            c.innerHTML = html;
+        } else {
+            c.innerHTML = '<p style="color:#888;" data-i18n="no_data">Нет данных</p>';
+        }
+    } catch (e) {
+        c.innerHTML = '<p style="color:#f44;">' + (t('load_error') || 'Ошибка загрузки') + '</p>';
+    }
+}
+
+async function showTreasury() {
+    var c = document.getElementById('admin-treasury');
+    try {
+        var r = await fetch('/api/admin/treasury', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var d = await r.json();
+        if (d.success && d.data) {
+            var html = '<div style="background:#111;padding:15px;border-radius:8px;text-align:center;margin-bottom:15px;">' +
+                '<p style="color:#f0d060;font-size:1.5rem;font-weight:700;">💰 ' + (d.data.totalProfit||0) + ' ALTYN</p>' +
+                '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;">' +
+                '<div><p style="color:#888;font-size:0.75rem;" data-i18n="activations">🔓 Активации</p><p style="color:#4caf50;">' + (d.data.activationProfit||0) + ' ALTYN</p></div>' +
+                '<div><p style="color:#888;font-size:0.75rem;" data-i18n="fees">💸 Комиссии</p><p style="color:#2196f3;">' + (d.data.feeProfit||0) + ' ALTYN</p></div>' +
+                '<div><p style="color:#888;font-size:0.75rem;" data-i18n="projects">📊 Проекты</p><p style="color:#ff9800;">' + (d.data.projectProfit||0) + ' ALTYN</p></div>' +
+                '</div></div>';
+            
+            var hres = await fetch('/api/admin/treasury/history', { headers: { 'Authorization': 'Bearer ' + api.token } });
+            var hdata = await hres.json();
+            
+            html += '<p style="color:#fff;margin-bottom:10px;" data-i18n="income_history">📜 История поступлений:</p>';
+            html += '<div style="max-height:300px;overflow-y:auto;">';
+            
+            if (hdata.success && hdata.data && hdata.data.length > 0) {
+                hdata.data.forEach(function(h) {
+                    var date = new Date(h.date).toLocaleString('ru-RU');
+                    var icon = '💰';
+                    var color = '#4caf50';
+                    
+                    if (h.source === 'activation') { icon = '🔓'; color = '#4caf50'; }
+                    else if (h.source === 'fee') { icon = '💸'; color = '#2196f3'; }
+                    else if (h.source === 'project_profit') { icon = '📊'; color = '#ff9800'; }
+                    
+                    html += '<div style="background:#0a0a0a;padding:10px;border-radius:6px;margin-bottom:5px;">' +
+                        '<div style="display:flex;justify-content:space-between;align-items:center;">' +
+                        '<span style="color:#fff;">' + icon + ' ' + (h.description||h.source) + '</span>' +
+                        '<span style="color:' + color + ';font-weight:600;">+' + h.amount + ' ALTYN</span>' +
+                        '</div>' +
+                        '<p style="color:#888;font-size:0.7rem;">' + date + '</p>' +
+                        '</div>';
+                });
+            } else {
+                html += '<p style="color:#888;text-align:center;padding:20px;" data-i18n="no_records">📭 Нет записей</p>';
+            }
+            html += '</div>';
+            
+            html += '<hr style="border-color:#2a2a2a;margin:10px 0;">' +
+                '<input type="number" id="treasuryAmount" placeholder="' + (t('withdraw_amount_placeholder') || 'Сумма вывода (ALTYN)') + '" style="margin-bottom:8px;">' +
+                '<input type="text" id="treasuryWallet" placeholder="' + (t('wallet_placeholder') || 'Кошелёк USDT (TRC-20)') + '">' +
+                '<button class="btn btn-gold btn-block" onclick="treasuryWithdraw()" data-i18n="treasury_withdraw_btn">📤 Вывести из казны</button>';
+            
+            c.innerHTML = html;
+        }
+    } catch (e) { c.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>'; }
+}
+
+async function treasuryWithdraw() {
+    var amount = parseFloat(document.getElementById('treasuryAmount')?.value);
+    var wallet = document.getElementById('treasuryWallet')?.value?.trim();
+    if (!amount || amount <= 0) { showNotif(t('enter_amount') || 'Введите сумму', 'error'); return; }
+    try {
+        var res = await fetch('/api/admin/treasury/withdraw', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ amount: amount, walletAddress: wallet })
+        });
+        var r = await res.json();
+        if (r.success) { showNotif('✅ ' + r.message, 'success'); showTreasury(); }
+    } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+async function showProjectTreasury() {
+    var c = document.getElementById('admin-projectTreasury');
+    c.innerHTML = '<p style="color:#888;" data-i18n="select_project">Выберите проект:</p>';
+    try {
+        var res = await fetch('/api/admin/projects', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        if (r.success && r.data) {
+            c.innerHTML = '<div class="partners-list">' + r.data.map(function(p) {
+                return '<div class="partner-row" style="cursor:pointer;margin-bottom:12px;padding:14px;background:#161616;border:1px solid #333;border-radius:8px;" onclick="viewProjectTreasury(\'' + p._id + '\',\'' + p.title + '\')">' +
+                    '<span style="color:#fff;font-weight:600;">' + p.title + '</span> ' +
+                    '<span class="badge" style="background:rgba(212,175,55,0.2);color:#d4af37;margin-left:10px;">' + (t('phase') || 'Фаза') + ': ' + (p.phase||1) + '</span>' +
+                    '</div>';
+            }).join('') + '</div>';
+        }
+    } catch(e) {}
+}
+
+async function viewProjectTreasury(id, title) {
+   var c = document.getElementById('admin-projectTreasury');
+   c.style.display = 'block';
+    try {
+        var res = await fetch('/api/admin/project-treasury/' + id, { 
+            headers: { 'Authorization': 'Bearer ' + api.token } 
+        });
+        var r = await res.json();
+        if (r.success && r.data) {
+            var treasury = r.data; // ← переименовал, чтобы не путать с функцией t()
+            c.innerHTML = '<h4 style="color:#d4af37;">🏗️ ' + title + '</h4>' +
+                '<div class="dash-card balance-card p-gold" style="text-align:center;margin:15px 0;">' +
+                '<h4 data-i18n="treasury_balance">💰 Баланс казны</h4>' +
+                '<h3>' + (treasury.balance || 0) + ' ALTYN</h3>' + // ← исправил t.balance → treasury.balance
+                '</div>' +
+                '<div class="dash-card" style="margin:15px 0;">' +
+                    '<h4 data-i18n="treasury_withdraw_title">📤 Вывести из казны проекта</h4>' +
+                    '<input type="number" id="projectWithdrawAmount" placeholder="' + (t('amount') || 'Сумма (ALTYN)') + '">' +
+                    '<input type="text" id="projectWithdrawWallet" placeholder="' + (t('wallet_placeholder') || 'Кошелёк USDT (TRC-20)') + '">' +
+                    '<input type="text" id="projectWithdrawDesc" placeholder="' + (t('description') || 'Описание (назначение)') + '">' +
+                    '<button class="btn btn-gold btn-block" style="margin-top:10px;" onclick="projectTreasuryWithdraw(\'' + id + '\')" data-i18n="treasury_withdraw_btn">📤 Вывести</button>' +
+                '</div>' +
+                '<div class="dash-card"><h4 data-i18n="history">📜 История</h4><div class="partners-list">' + 
+                (treasury.history || []).map(function(h) { // ← исправил t.history → treasury.history
+                    var color = h.amount > 0 ? '#4caf50' : '#f44336';
+                    return '<div class="partner-row"><span>' + h.description + '</span><span style="color:' + color + ';margin-left:10px;">' + (h.amount > 0 ? '+' : '') + h.amount + ' ALTYN</span></div>';
+                }).join('') + '</div></div>' +
+                '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="showProjectTreasury()" data-i18n="back_to_list">← К списку</button>';
+        }
+    } catch(e) {
+        c.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>';
+    }
+}
+
+async function projectTreasuryWithdraw(id) {
+    var amount = parseFloat(document.getElementById('projectWithdrawAmount')?.value);
+    var wallet = document.getElementById('projectWithdrawWallet')?.value?.trim();
+    var desc = document.getElementById('projectWithdrawDesc')?.value?.trim();
+    
+    if (!amount || amount <= 0) { showNotif(t('enter_amount') || 'Введите сумму', 'error'); return; }
+    if (!desc) { showNotif(t('enter_purpose') || 'Укажите назначение вывода', 'error'); return; }
+    
+    try {
+        var res = await fetch('/api/admin/project-treasury/' + id + '/withdraw', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ amount: amount, walletAddress: wallet, description: desc })
+        });
+        var r = await res.json();
+        if (r.success) {
+            showNotif('✅ ' + (t('withdrawn') || 'Выведено') + ' ' + amount + ' ALTYN', 'success');
+            var projectName = document.querySelector('#admin-projectTreasury h4')?.textContent?.replace('🏗️ ', '') || 'Проект';
+            viewProjectTreasury(id, projectName);
+        } else {
+            showNotif('❌ ' + (r.message || t('error') || 'Ошибка'), 'error');
+        }
+    } catch(e) { showNotif(t('error') || 'Ошибка', 'error'); }
+}
+
+async function showAProjects() {
+    var c = document.getElementById('admin-projects');
+    if (!c) return;
+    c.innerHTML = '<p style="color:#888;">' + (t('loading_projects') || 'Загрузка проектов...') + '</p>';
+    
+    try {
+        var res = await fetch('/api/admin/projects', { headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        
+        if (r.success && r.data && r.data.length > 0) {
+            c.innerHTML = '<div style="max-height:400px;overflow-y:auto;">' + r.data.map(function(p) {
+    var statusColor = p.status === 'active' ? '#4caf50' : p.status === 'pending' ? '#ff9800' : '#888';
+    return '<div style="background:#111;padding:15px;border-radius:8px;margin-bottom:10px;">' +
+        '<h4 style="color:#fff;">' + p.title + '</h4>' +
+        '<p style="color:#888;font-size:0.8rem;">' + (t('from') || 'От:') + ' ' + (p.initiator?.fullName||'') + ' | ROI: ' + p.expectedROI + '%</p>' +
+        '<p style="color:' + statusColor + ';font-size:0.8rem;">' + (t('status') || 'Статус:') + ' ' + p.status + ' | ' + (t('phase') || 'Фаза') + ': ' + (p.phase||1) + '</p>' +
+		'<p style="color:#888;font-size:0.8rem;">🆔 ' + (p.projectNumber || p._id) + ' | 🎯 Цель: <strong style="color:#f0d060;">' + (p.targetAmount||0) + ' ALTYN</strong> | 💰 Собрано: <strong style="color:#4caf50;">' + (p.collectedAmount||0) + ' ALTYN</strong></p>' +
+        (p.phase === 2 ? '<button class="btn btn-sm" onclick="moveToPhase3(\'' + p._id + '\')" style="background:#2196f3;color:#fff;border:none;border-radius:8px;margin-top:5px;width:100%;" data-i18n="move_to_phase3">🚀 В фазу 3</button>' : '') +
+        (p.phase === 3 ? '<button class="btn btn-gold btn-sm" onclick="distributeProfit(\'' + p._id + '\')" style="margin-top:5px;width:100%;" data-i18n="distribute_profit">💰 Распределить прибыль</button>' : '') +
+        (p.status === 'pending' ? '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;"><button class="btn btn-gold btn-sm" onclick="activateProject(\'' + p._id + '\')" data-i18n="activate_project">✅ Активировать</button><button class="btn btn-sm" onclick="cancelProject(\'' + p._id + '\')" style="background:#b71c1c;color:#fff;border:none;border-radius:8px;" data-i18n="cancel_project">❌ Отклонить</button></div>' : '') +
+        '<button class="btn btn-outline-gold btn-sm" onclick="showProjectInvestors(\'' + p._id + '\')" style="margin-top:5px;" data-i18n="project_investors_btn">👥 Инвесторы (' + (p.totalInvestors||0) + ')</button>' +
+        '<button class="btn btn-outline-gold btn-sm" onclick="editProject(\'' + p._id + '\')" style="margin-top:5px;" data-i18n="edit_project_btn">✏️ Редактировать</button>' +
+        '<button class="btn btn-sm" onclick="deleteProject(\'' + p._id + '\')" style="background:#b71c1c;color:#fff;border:none;border-radius:8px;margin-top:5px;" data-i18n="delete_project_btn">🗑️ Удалить</button>' +
+        '</div>';
+}).join('') + '</div>';
+        } else {
+            c.innerHTML = '<p style="text-align:center;color:#888;" data-i18n="no_projects">Нет проектов</p>';
+        }
+    } catch (e) {
+        c.innerHTML = '<p style="color:#f44;">' + (t('load_error') || 'Ошибка загрузки') + '</p>';
+    }
+}
+async function activateProject(id) {
+    try {
+        var res = await fetch('/api/admin/projects/' + id + '/status', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ status: 'active' })
+        });
+        var r = await res.json();
+        if (r.success) { showNotif(t('project_activated') || '✅ Проект активирован!', 'success'); showAProjects(); }
+    } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+async function cancelProject(id) {
+    try {
+        var res = await fetch('/api/admin/projects/' + id + '/status', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ status: 'cancelled' })
+        });
+        var r = await res.json();
+        if (r.success) { showNotif(t('project_cancelled') || 'Проект отклонён', 'info'); showAProjects(); }
+    } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+async function distributeProfit(id) {
+    var amount = prompt((t('profit_amount') || 'Сумма прибыли проекта (ALTYN):'), '10000');
+    if (!amount) return;
+    try {
+        var res = await fetch('/api/admin/projects/' + id + '/distribute', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify({ profitAmount: parseFloat(amount) })
+        });
+        var r = await res.json();
+        if (r.success) { showNotif('✅ ' + r.message, 'success'); showAProjects(); }
+    } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+async function showAWithdrawals() {
+    var c = document.getElementById('admin-withdrawals'); c.innerHTML = (t('loading') || 'Загрузка...');
+    try { 
+        var r = await api.getAdminWithdrawals(); 
+        c.innerHTML = r.success && r.data && r.data.length ? r.data.map(function(w) { 
+            return '<div style="background:#111;padding:10px;border-radius:8px;margin-bottom:10px;">' +
+                '<p style="color:#fff;">' + (w.userId?.fullName||'') + '</p>' +
+                '<p style="color:#d4af37;font-size:0.8rem;">ID: ' + (w.userId?.userId||'—') + '</p>' +
+                '<p style="color:#888;">' + (t('amount') || 'Сумма:') + ' ' + w.amount + ' ALTYN | ' + (t('fee') || 'Комиссия:') + ' ' + w.fee + '</p>' +
+                '<p style="color:#888;font-size:0.8rem;">' + (t('wallet') || 'Кошелёк:') + ' ' + (w.walletAddress||(t('not_specified') || 'Не указан')) + '</p>' +
+                '<p style="color:#888;font-size:0.7rem;">📅 ' + new Date(w.createdAt).toLocaleString('ru-RU') + '</p>' +
+                '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">' +
+                '<button class="btn btn-gold btn-sm" onclick="apprW(\'' + w._id + '\')" data-i18n="approve_btn">✅ Одобрить</button>' +
+                '<button class="btn btn-sm" onclick="rejW(\'' + w._id + '\')" style="background:#b71c1c;color:#fff;border:none;border-radius:8px;" data-i18n="reject_btn">❌ Отклонить</button>' +
+                '</div>' +
+                '</div>'; 
+        }).join('') : '<p style="color:#888;" data-i18n="no_withdrawals">Нет заявок</p>'; 
+    } catch (e) { c.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>'; }
+}
+
+async function rejW(id) {
+    var reason = prompt((t('reject_reason') || 'Причина отклонения:'), (t('wrong_details') || 'Неверные реквизиты'));
+    if (!reason) return;
+    try { 
+        var r = await api.rejectWithdrawal(id, reason); 
+        if (r.success) { showNotif(t('withdrawal_rejected') || 'Заявка отклонена', 'info'); showAWithdrawals(); } 
+    } catch (e) { showNotif(e.message, 'error'); }
+}
+
+async function apprW(id) { try { var r = await api.approveWithdrawal(id); if (r.success) { showNotif(t('approved') || 'Одобрено', 'success'); showAWithdrawals(); } } catch (e) { showNotif(e.message, 'error'); } }
+
+async function showAKYC() {
+    var c = document.getElementById('admin-kyc'); c.innerHTML = (t('loading_kyc') || 'Загрузка заявок KYC...');
+    try {
+        var res = await fetch('/api/admin/kyc?status=pending');
+        var r = await res.json();
+        if (r.success && r.data && r.data.length > 0) {
+            var html = '';
+            for (var i = 0; i < r.data.length; i++) {
+                var v = r.data[i];
+                var userName = v.userId ? (v.userId.fullName || v.userId.userId) : 'N/A';
+                html += '<div style="background:#111;padding:15px;border-radius:8px;margin-bottom:10px;border:1px solid #2a2a2a;">';
+                html += '<p style="color:#fff;"><strong>' + (v.firstName||'') + ' ' + (v.lastName||'') + '</strong></p>';
+                html += '<p style="color:#888;font-size:0.85rem;">👤 ' + userName + '</p>';
+                html += '<p style="color:#888;font-size:0.85rem;">📄 ' + (v.documentType||'') + ': ' + (v.documentNumber||'') + '</p>';
+                html += '<p style="color:#888;font-size:0.85rem;">🌍 ' + (v.country||'') + '</p>';
+                html += '<p style="color:#888;font-size:0.8rem;">📅 ' + new Date(v.submittedAt).toLocaleDateString('ru-RU') + '</p>';
+                if (v.documentFront) { html += '<p style="color:#4caf50;font-size:0.8rem;" data-i18n="photo_uploaded">📎 Фото загружено</p>'; }
+                html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">';
+                html += '<button class="btn btn-gold btn-sm" onclick="apprKYC(\'' + v._id + '\')" style="font-size:0.8rem;" data-i18n="approve_btn">✅ Одобрить</button>';
+                html += '<button class="btn btn-sm" onclick="rejKYC(\'' + v._id + '\')" style="background:#b71c1c;color:#fff;border:none;border-radius:8px;font-size:0.8rem;padding:8px;" data-i18n="reject_btn">❌ Отклонить</button>';
+                html += '</div></div>';
+            }
+            c.innerHTML = html;
+        } else { c.innerHTML = '<p style="text-align:center;color:#888;padding:20px;" data-i18n="no_kyc_requests">📭 Нет заявок на проверку</p>'; }
+    } catch (e) { c.innerHTML = '<p style="text-align:center;color:#f44;padding:20px;">❌ ' + (t('error') || 'Ошибка') + ': ' + e.message + '</p>'; }
+}
+
+async function apprKYC(id) {
+    if (!confirm(t('approve_kyc_confirm') || 'Одобрить верификацию?')) return;
+    try { var r = await fetch('/api/admin/kyc/' + id + '/approve', { method: 'PUT' }); var d = await r.json(); if (d.success) { showNotif(t('kyc_approved_msg') || '✅ Верификация одобрена!', 'success'); showAKYC(); } } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+async function rejKYC(id) {
+    var reason = prompt((t('reject_reason_kyc') || 'Причина отклонения:'), (t('docs_not_match') || 'Документы не соответствуют требованиям'));
+    if (!reason) return;
+    try { var r = await fetch('/api/admin/kyc/' + id + '/reject', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ reason: reason }) }); var d = await r.json(); if (d.success) { showNotif(t('kyc_rejected_msg') || 'Заявка отклонена', 'info'); showAKYC(); } } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+async function showAStats() { var c = document.getElementById('admin-stats'); try { var r = await api.getAdminDashboard(); if (r.success) { var s = r.data.stats; c.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div style="background:#111;padding:15px;text-align:center;"><p style="color:#888;" data-i18n="total_users">Пользователей</p><p style="font-size:1.5rem;color:#f0d060;">' + s.totalUsers + '</p></div><div style="background:#111;padding:15px;text-align:center;"><p style="color:#888;" data-i18n="activated_users">Активировано</p><p style="font-size:1.5rem;color:#4caf50;">' + s.activatedUsers + '</p></div></div>'; } } catch (e) { c.innerHTML = '<p style="color:#f44;">' + (t('error') || 'Ошибка') + '</p>'; } }
+
+function initSlider() {
+    var track = document.getElementById('sliderTrack'), dots = document.querySelectorAll('.slider-dot'), slide = 0, total = dots.length, interval;
+    function go(i) { slide = i; if (track) track.style.transform = 'translateX(-' + (i*100) + '%)'; dots.forEach(function(d, idx) { d.classList.toggle('active', idx === i); }); }
+    dots.forEach(function(d) { d.addEventListener('click', function() { go(parseInt(d.dataset.slide)); clearInterval(interval); interval = setInterval(function() { go((slide+1)%total); }, 5000); }); });
+    if (total > 0) interval = setInterval(function() { go((slide+1)%total); }, 5000);
+}
+
+function initLangs() { document.querySelectorAll('.lang-btn').forEach(function(b) { b.addEventListener('click', function() { document.querySelectorAll('.lang-btn').forEach(function(x) { x.classList.remove('active'); }); b.classList.add('active'); }); }); }
+
+function initHeaderBtns() {
+    document.getElementById('headerLoginBtn')?.addEventListener('click', function() { switchToLogin(); scrollToAuth(); });
+    document.getElementById('headerRegisterBtn')?.addEventListener('click', function() { switchToRegister(); scrollToAuth(); });
+}
+
+async function updateRates() {
+    try {
+        var r = await api.getRates();
+        if (r.success && r.data) {
+            var d = r.data;
+            
+            document.querySelectorAll('.goldRate').forEach(function(el) {
+                el.textContent = parseFloat(d.gold.pricePerGram).toFixed(2) + ' USD/g';
+            });
+            
+            document.querySelectorAll('.silverRate').forEach(function(el) {
+                el.textContent = parseFloat(d.silver.pricePerGram).toFixed(2) + ' USD/g';
+            });
+            
+            document.querySelectorAll('.altynRate').forEach(function(el) {
+                el.textContent = parseFloat(d.altyn.priceUSD).toFixed(4) + ' USD';
+            });
+            
+            document.querySelectorAll('.usdAltynRate').forEach(function(el) {
+                el.textContent = d.currencies.usdToAltyn;
+            });
+            
+            document.querySelectorAll('.eurAltynRate').forEach(function(el) {
+                el.textContent = d.currencies.eurToAltyn;
+            });
+			
+			document.querySelectorAll('.altynRateHero').forEach(function(el) {
+    el.textContent = parseFloat(d.altyn.priceUSD).toFixed(4) + ' USD';
+});
+            
+            window.currentGoldRate = parseFloat(d.gold.pricePerGram);
+            window.currentAltynRate = parseFloat(d.altyn.priceUSD);
+        }
+    } catch (e) { console.warn(t('rates_not_updated') || 'Курсы не обновлены'); }
+}
+
+function scrollToHero() { document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }); }
+function scrollToAuth() { document.getElementById('authForms')?.scrollIntoView({ behavior: 'smooth' }); }
+function scrollToAbout() { document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }
+
+function toggleLangs() {
+    var list = document.getElementById('langList');
+    if (list) {
+        list.style.display = list.style.display === 'block' ? 'none' : 'block';
+    }
+}
+
+function changeLang(lang) {
+    var list = document.getElementById('langList');
+    if (list) list.style.display = 'none';
+    
+    var names = { ru: 'RU', en: 'EN', ua: 'UA', zh: '中文', kg: 'KG', uz: 'UZ' };
+    var btn = document.getElementById('langBtn');
+    if (btn) btn.innerHTML = '🌐 ' + (names[lang] || lang) + ' ▼';
+    
+    fetch('/locales/' + lang + '.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            translations = data;
+            currentLang = lang;
+            localStorage.setItem('dibp_lang', lang);
+            updatePageTexts();
+            updateBurger();
+        })
+        .catch(function(e) {
+            console.error('Ошибка перевода:', e);
+        });
+}
+
+function updatePageTexts() {
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        // Пропускаем элементы с дочерними тегами
+        if (el.children.length > 0) return;
+        
+        var key = el.getAttribute('data-i18n');
+        if (translations[key]) {
+            el.textContent = translations[key];
+        } else {
+            var original = el.getAttribute('data-i18n-original');
+            if (original) el.textContent = original;
+        }
+    });
+}
+
+async function deleteProject(id) {
+    if (!confirm(t('delete_project_confirm') || 'Удалить проект?')) return;
+    try {
+        var res = await fetch('/api/admin/projects/' + id, { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + api.token } });
+        var r = await res.json();
+        if (r.success) { showNotif('🗑️ ' + r.message, 'success'); showAProjects(); }
+    } catch (e) { showNotif(t('error') || 'Ошибка', 'error'); }
+}
+
+function editProject(id) {
+    fetch('/api/projects/' + id, { headers: { 'Authorization': 'Bearer ' + api.token } })
+        .then(function(res) { return res.json(); })
+        .then(function(r) {
+            if (r.success) {
+                var p = r.data;
+                document.getElementById('authForms').innerHTML = 
+                    '<div class="auth-card" style="max-width:1000px;padding:30px;">' +
+                    '<h3 style="text-align:center;color:#d4af37;font-size:1.4rem;" data-i18n="edit_project_title">✏️ Редактировать проект</h3>' +
+                    '<div class="form-group"><label style="color:#b0b0b0;font-size:0.9rem;" data-i18n="edit_project_name">Название</label><input type="text" id="editTitle" value="' + (p.title||'') + '" style="padding:14px;font-size:1rem;"></div>' +
+                    '<div class="form-group"><label style="color:#b0b0b0;font-size:0.9rem;" data-i18n="edit_project_desc">Описание</label><textarea id="editDesc" rows="10" style="resize:vertical;min-height:250px;padding:14px;font-size:1rem;line-height:1.6;">' + (p.description||'') + '</textarea></div>' +
+                    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">' +
+                    '<div class="form-group"><label style="color:#b0b0b0;font-size:0.9rem;" data-i18n="edit_project_target">Цель (ALTYN)</label><input type="number" id="editTarget" value="' + (p.targetAmount||'') + '" style="padding:14px;font-size:1rem;"></div>' +
+                    '<div class="form-group"><label style="color:#b0b0b0;font-size:0.9rem;" data-i18n="edit_project_roi">ROI (%)</label><input type="number" id="editROI" value="' + (p.expectedROI||'') + '" style="padding:14px;font-size:1rem;"></div>' +
+                    '</div>' +
+                    '<div class="form-group"><label style="color:#b0b0b0;font-size:0.9rem;" data-i18n="edit_project_location">Локация</label><input type="text" id="editLocation" value="' + (p.location||'') + '" style="padding:14px;font-size:1rem;"></div>' +
+                    '<button class="btn btn-gold btn-block btn-lg" onclick="saveEdit(\'' + id + '\')" data-i18n="save_btn">💾 Сохранить</button>' +
+                    '<button class="btn btn-outline-gold btn-block" style="margin-top:10px;" onclick="goBack()" data-i18n="back_btn">← Назад</button>' +
+                    '</div>';
+            }
+        });
+}
+
+async function saveEdit(id) {
+    var data = {
+        title: document.getElementById('editTitle')?.value,
+        description: document.getElementById('editDesc')?.value,
+        targetAmount: parseFloat(document.getElementById('editTarget')?.value),
+        expectedROI: parseFloat(document.getElementById('editROI')?.value),
+        location: document.getElementById('editLocation')?.value
+    };
+    try {
+        var res = await fetch('/api/projects/' + id + '/edit', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api.token },
+            body: JSON.stringify(data)
+        });
+        var r = await res.json();
+        if (r.success) { showNotif('✅ ' + r.message, 'success'); showMyProjects(); }
+        else { showNotif('❌ ' + (r.message || t('error') || 'Ошибка'), 'error'); }
+    } catch (e) { showNotif(t('connection_error') || '❌ Ошибка соединения', 'error'); }
+}
+
+function showNotif(msg, type) {
+    var old = document.querySelector('.dibp-notification'); if (old) old.remove();
+    var n = document.createElement('div'); n.textContent = msg;
+    var c = type === 'success' ? ['#1b5e20','#4caf50'] : type === 'error' ? ['#b71c1c','#f44336'] : ['#1a237e','#3f51b5'];
+    n.style.cssText = 'position:fixed;top:20px;right:20px;padding:15px 20px;border-radius:12px;font-size:0.9rem;z-index:9999;background:' + c[0] + ';color:#fff;border:1px solid ' + c[1] + ';box-shadow:0 8px 32px rgba(0,0,0,0.4);cursor:pointer;';
+    n.addEventListener('click', function() { n.remove(); });
+    document.body.appendChild(n);
+    setTimeout(function() { if (n.parentNode) n.remove(); }, 4000);
+}
+
+function getDefForm() {
+    return '<div class="auth-card"><div class="auth-tabs"><button class="auth-tab active" data-tab="login" data-i18n="login_tab">Вход</button><button class="auth-tab" data-tab="register" data-i18n="register_tab">Регистрация</button></div><form class="auth-form active" id="loginForm" onsubmit="return false;"><input type="text" id="loginEmail" placeholder="' + (t('login_email_placeholder') || 'Email или ID') + '"><input type="password" id="loginPassword" placeholder="' + (t('login_password_placeholder') || 'Пароль') + '"><a style="color:#888;font-size:0.75rem;cursor:pointer;display:block;text-align:right;margin-bottom:10px;" onclick="showForgotForm()" data-i18n="forgot_password">Забыли пароль?</a><button class="btn btn-gold btn-block" onclick="handleLogin()" data-i18n="login_btn">Войти</button></form><form class="auth-form" id="registerForm" onsubmit="return false;"><input type="text" id="regFirstName" placeholder="' + (t('reg_firstname_placeholder') || 'Имя') + '" required><input type="text" id="regLastName" placeholder="' + (t('reg_lastname_placeholder') || 'Фамилия') + '" required><input type="email" id="regEmail" placeholder="' + (t('reg_email_placeholder') || 'Email') + '" required><input type="tel" id="regPhone" placeholder="' + (t('reg_phone_placeholder') || 'Телефон') + '" required><input type="password" id="regPassword" placeholder="' + (t('reg_password_placeholder') || 'Пароль (мин. 8 символов)') + '" required minlength="8"><input type="password" id="regPasswordConfirm" placeholder="' + (t('reg_password_confirm_placeholder') || 'Повторите пароль') + '" required><div class="form-group"><label><span data-i18n="reg_captcha_label">Проверка:</span> <strong id="captchaQuestion">5 + 3 = ?</strong></label><input type="number" id="captchaAnswer" placeholder="' + (t('reg_captcha_placeholder') || 'Введите ответ') + '" required></div><label style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;"><input type="checkbox" id="agreeTerms" style="width:auto;margin:0;"> <span data-i18n="reg_agree">Я принимаю</span> <a href="/terms.html" target="_blank" style="color:#d4af37;" data-i18n="reg_agree_link">условия соглашения</a></label><div class="form-group"><label style="color:#d4af37;">🔗 Реферальный код (если есть)</label><input type="text" id="regSponsorId" value="" placeholder="DIBP-XXXX"></div><button class="btn btn-gold btn-block" onclick="handleRegister()" data-i18n="reg_btn">Создать</button></form></div>';
+}
+
+async function uploadAvatar() {
+    var file = document.getElementById('avatarInput')?.files?.[0];
+    if (!file) return;
+    
+    var fd = new FormData();
+    fd.append('avatar', file);
+    
+    showNotif(t('uploading') || '📤 Загружаем...', 'info');
+    
+    try {
+        var res = await fetch('/api/auth/avatar', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + api.token },
+            body: fd
+        });
+        var r = await res.json();
+        
+        if (r.success) {
+            api.user.avatar = r.data.avatar;
+            api.save();
+            showNotif(t('avatar_updated') || '✅ Аватар обновлён!', 'success');
+            showDash();
+        }
+    } catch (e) {
+        showNotif('❌ ' + e.message, 'error');
+    }
+}
+async function moveToPhase3(id) {
+    try {
+        var res = await fetch('/api/admin/projects/' + id + '/phase3', { 
+            method: 'PUT',
+            headers: { 'Authorization': 'Bearer ' + api.token }
+        });
+        var r = await res.json();
+        if (r.success) { showNotif('✅ ' + r.message, 'success'); showAProjects(); }
+    } catch (e) { showNotif('❌ ' + e.message, 'error'); }
+}
+
+function toggleProjectInfo(id) {
+    window.open('/project/' + id, '_blank');
+}
+
+function copyProjectLink(id) {
+    var link = window.location.origin + '/project/' + id;
+    navigator.clipboard.writeText(link).then(function() {
+        showNotif('📋 Ссылка скопирована!', 'success');
+    });
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        showNotif(t('link_copied') || '📋 Ссылка скопирована!', 'success');
+    });
+}
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+}
+
+function exportCSV() {
+    var rows = document.querySelectorAll('#txList > div');
+    var csv = (t('csv_date') || 'Дата') + ',' + (t('csv_description') || 'Описание') + ',' + (t('csv_amount') || 'Сумма') + '\n';
+    rows.forEach(function(r) {
+        csv += '"' + r.textContent.replace(/"/g,'""').replace(/,/g,' ') + '"\n';
+    });
+    var blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+    var link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'transactions.csv';
+    link.click();
+    showNotif(t('file_downloaded') || '📥 Файл скачан!', 'success');
+}
+</script>
+</body>
+</html>

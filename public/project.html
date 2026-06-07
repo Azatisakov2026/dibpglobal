@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проект — DIBP Global</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --gold: #d4af37; --bg: #0a0a0a; --card: #1a1a1a; --text: #fff; --muted: #888; --border: #2a2a2a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; padding: 0; }
+        #projectContent { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .logo { text-align: center; margin-bottom: 25px; font-size: 2.5rem; color: var(--gold); }
+        .section { background: var(--card); border: 1px solid rgba(212,175,55,.35); border-radius: 14px; padding: 25px 30px; margin-bottom: 18px; }
+        .section h1 { color: var(--gold); font-size: 2rem; margin: 0; text-align: center; }
+        .section .info-line { color: var(--muted); font-size: 0.95rem; text-align: center; margin-top: 6px; }
+        .stats-grid { display: grid; gap: 1px; background: var(--border); border-radius: 10px; overflow: hidden; }
+        .stat-cell { background: #111; padding: 18px 12px; text-align: center; }
+        .stat-cell .label { color: var(--muted); font-size: 0.8rem; }
+        .stat-cell .value { color: var(--gold); font-size: 1.2rem; font-weight: 700; }
+        .progress-bar { background: #2a2a2a; border-radius: 10px; height: 8px; margin-top: 15px; }
+        .progress-fill { background: var(--gold); height: 8px; border-radius: 10px; }
+        .section h3 { color: var(--gold); font-size: 1.3rem; margin-bottom: 10px; }
+        .section p { color: #b0b0b0; font-size: 1.05rem; word-wrap: break-word; }
+        .btn { display: inline-block; padding: 16px 36px; border-radius: 10px; font-weight: 600; text-decoration: none; background: var(--gold); color: #000; font-size: 1.1rem; }
+        .btn-wrapper { text-align: center; margin-top: 10px; }
+        .loading { text-align: center; color: var(--muted); padding: 60px; font-size: 1.2rem; }
+        .header-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .header-row .left { color: var(--muted); font-size: 0.9rem; }
+        .header-row .right { color: var(--gold); font-size: 0.9rem; }
+        .divider { border-bottom: 1px solid var(--border); margin: 15px 0; }
+        .project-images { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .project-images img { max-width: 200px; border-radius: 8px; border: 1px solid var(--border); }
+        .project-video { margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div id="projectContent">
+    <div class="loading">Загрузка проекта...</div>
+</div>
+
+<script>
+    var id = window.location.pathname.replace('/project/', '');
+    
+    fetch('/api/project-detail/' + id)
+        .then(function(res) { return res.json(); })
+        .then(function(r) {
+            if (r.success && r.data) {
+                var p = r.data;
+                var progress = p.targetAmount > 0 ? Math.min((p.collectedAmount || 0) / p.targetAmount * 100, 100) : 0;
+                var html = '';
+                
+                html += '<div class="logo"><i class="fas fa-crown"></i></div>';
+                
+                // Хедер
+                html += '<div class="section">';
+                html += '<div class="header-row">';
+                html += '<div class="left">👤 Бизнес-проект от: <b style="color:#d4af37;">' + (p.initiator?.userId || 'DIBP-XXXX') + '</b></div>';
+                html += '<div class="right">🆔 Проект: <b>' + (p.projectNumber || p._id || '') + '</b></div>';
+                html += '</div>';
+                html += '<div class="divider"></div>';
+                html += '<h1>' + (p.title || '') + '</h1>';
+                html += '</div>';
+                
+                // Локация + Категория
+                html += '<div class="section">';
+                html += '<p class="info-line">📍 <b>Локация:</b> ' + (p.location || 'Не указана') + '</p>';
+                html += '<div class="divider"></div>';
+                html += '<p class="info-line"> <b>Категория проекта:</b> ' + (p.category || 'Не указана') + '</p>';
+                html += '</div>';
+                
+                // Статистика в один ряд
+                html += '<div class="section">';
+                html += '<div class="stats-grid" style="grid-template-columns: repeat(5, 1fr);">';
+                html += '<div class="stat-cell"><div class="label">🎯 Цель</div><div class="value">' + (p.targetAmount || 0) + ' ALTYN</div></div>';
+                html += '<div class="stat-cell"><div class="label">💰 Собрано</div><div class="value">' + (p.collectedAmount || 0) + ' ALTYN</div></div>';
+                html += '<div class="stat-cell"><div class="label">📈 ROI</div><div class="value">' + (p.expectedROI || 0) + '%</div></div>';
+                html += '<div class="stat-cell"><div class="label">⚠️ Риск</div><div class="value">' + (p.riskLevel || '—') + '</div></div>';
+                html += '<div class="stat-cell"><div class="label">👥 Инвесторов</div><div class="value">' + (p.totalInvestors || 0) + '</div></div>';
+                html += '</div>';
+                html += '<div class="progress-bar"><div class="progress-fill" style="width:' + progress + '%;"></div></div>';
+                html += '<p style="text-align:center;color:var(--muted);font-size:0.85rem;margin-top:8px;">' + Math.round(progress) + '% собрано</p>';
+                html += '</div>';
+                
+                // Фото и видео
+                if (p.images && p.images.length > 0) {
+                    html += '<div class="section"><h3>📷 Фото проекта</h3><div class="project-images">';
+                    p.images.forEach(function(img) {
+                        html += '<img src="' + img + '" alt="Фото проекта">';
+                    });
+                    html += '</div></div>';
+                }
+                if (p.videoUrl) {
+                    html += '<div class="section"><h3>🎥 Видео-презентация</h3><div class="project-video"><a href="' + p.videoUrl + '" target="_blank" style="color:#d4af37;">' + p.videoUrl + '</a></div></div>';
+                }
+                
+                // Описание
+                html += '<div class="section"><h3>О проекте</h3><p>' + (p.description || '') + '</p></div>';
+                
+                // Кнопка
+                html += '<div class="btn-wrapper"><a href="/" class="btn">💰 Инвестировать на платформе</a></div>';
+                
+                document.getElementById('projectContent').innerHTML = html;
+            } else {
+                document.getElementById('projectContent').innerHTML = '<div class="loading">Проект не найден</div>';
+            }
+        })
+        .catch(function() {
+            document.getElementById('projectContent').innerHTML = '<div class="loading">Ошибка загрузки</div>';
+        });
+</script>
+
+</body>
+</html>
